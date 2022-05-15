@@ -1,0 +1,203 @@
+format 224
+
+classcanvas 128198 class_ref 128326 // RemoteControl
+  classdiagramsettings member_max_width 0 end
+  xyz 831.2 401.8 2000
+end
+classcanvas 128326 class_ref 128454 // Order
+  classdiagramsettings member_max_width 0 end
+  xyz 1501.8 429.2 2000
+end
+classcanvas 128454 class_ref 128582 // NoOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 1789.6 431.4 2000
+end
+classcanvas 129222 class_ref 128710 // FoodInputOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 390 732.6 2000
+end
+classcanvas 129350 class_ref 128838 // Food
+  classdiagramsettings member_max_width 0 end
+  xyz 366.6 885 2000
+end
+classcanvas 129734 class_ref 135366 // FoodCancelOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 719 732.8 3005
+end
+classcanvas 130374 class_ref 135622 // Drink
+  classdiagramsettings member_max_width 0 end
+  xyz 1135.1 883.3 2000
+end
+classcanvas 130502 class_ref 135750 // DrinkInputOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 1090.8 736.7 2006
+end
+classcanvas 131014 class_ref 135878 // DrinkCancelOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 1386.4 738.6 3005
+end
+classcanvas 131398 class_ref 136006 // Alcohol
+  classdiagramsettings member_max_width 0 end
+  xyz 1828.1 889.5 2000
+end
+classcanvas 131526 class_ref 136134 // AlcoholInputOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 1736.3 740.3 2006
+end
+classcanvas 132038 class_ref 136262 // AlcoholCancelOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 2092.3 742.5 2006
+end
+classcanvas 132550 class_ref 136518 // SideMenu
+  classdiagramsettings member_max_width 0 end
+  xyz 2556.1 891.3 2005
+end
+classcanvas 132678 class_ref 136646 // SideMenuInputOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 2493.5 742.1 2006
+end
+classcanvas 133190 class_ref 136774 // SideMenuOutputOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 2928.2 744 3005
+end
+note 135878 "Older menu"
+  xyzwh 311.8 661.7 2000 2999 433
+relationcanvas 128582 relation_ref 128198 // <directional aggregation>
+  from ref 128198 z 2001 stereotype "<<list>>" xyz 1386 466 3000 to ref 128326
+  role_a_pos 1385 441 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128710 relation_ref 128326 // <directional aggregation>
+  geometry VHV unfixed
+  from ref 128198 z 2001 stereotype "<<list>>" xyz 1107 355 3000 to point 1078 323
+  line 128838 z 2001 to point 1561.6 323
+  line 128966 z 2001 to ref 128326
+  role_a_pos 1573 406 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129094 relation_ref 128454 // <realization>
+  from ref 128454 z 2001 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129478 relation_ref 134982 // <unidirectional association>
+  decenter_begin 501
+  decenter_end 230
+  from ref 129222 z 2001 to ref 129350
+  role_a_pos 517 862 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129606 relation_ref 135110 // <realization>
+  geometry VHV
+  from ref 129222 z 2001 to point 504 618
+  line 133574 z 2001 to point 1561 618
+  line 133702 z 2001 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129862 relation_ref 135238 // <unidirectional association>
+  decenter_begin 493
+  decenter_end 768
+  from ref 129734 z 3006 to ref 129350
+  role_a_pos 849 862 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129990 relation_ref 135366 // <realization>
+  geometry VHV
+  from ref 129734 z 3006 to point 840 618
+  line 133830 z 3006 to point 1561 618
+  line 133958 z 3006 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130758 relation_ref 135622 // <realization>
+  geometry VHV
+  from ref 130502 z 2007 to point 1205 619
+  line 134086 z 2007 to point 1561 619
+  line 134214 z 2007 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130886 relation_ref 135750 // <unidirectional association>
+  decenter_begin 523
+  decenter_end 180
+  from ref 130502 z 2007 to ref 130374
+  role_a_pos 1224 860 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131142 relation_ref 135878 // <realization>
+  geometry VHV
+  from ref 131014 z 3006 to point 1510 620
+  line 134342 z 3006 to point 1561 620
+  line 134470 z 3006 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131270 relation_ref 136006 // <unidirectional association>
+  decenter_begin 504
+  decenter_end 855
+  from ref 131014 z 3006 to ref 130374
+  role_a_pos 1523 860 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131654 relation_ref 136134 // <realization>
+  geometry VHV
+  from ref 131526 z 2007 to point 1871 621
+  line 134598 z 2007 to point 1561 621
+  line 134726 z 2007 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131910 relation_ref 136390 // <unidirectional association>
+  decenter_begin 523
+  decenter_end 112
+  from ref 131526 z 2007 to ref 131398
+  role_a_pos 1889 866 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132166 relation_ref 136518 // <realization>
+  geometry VHV
+  from ref 132038 z 2007 to point 2236 623
+  line 134854 z 2007 to point 1561 623
+  line 134982 z 2007 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132294 relation_ref 136646 // <unidirectional association>
+  decenter_begin 483
+  decenter_end 892
+  from ref 132038 z 2007 to ref 131398
+  role_a_pos 2245 866 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132934 relation_ref 136902 // <realization>
+  geometry VHV
+  from ref 132678 z 2007 to point 2655 623
+  line 135110 z 2007 to point 1561 623
+  line 135238 z 2007 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133062 relation_ref 137030 // <unidirectional association>
+  decenter_begin 518
+  decenter_end 168
+  from ref 132678 z 2007 to ref 132550
+  role_a_pos 2675 868 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133318 relation_ref 137158 // <realization>
+  geometry VHV
+  from ref 133190 z 3006 to point 3098 623
+  line 135366 z 3006 to point 1561 623
+  line 135494 z 3006 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133446 relation_ref 137286 // <unidirectional association>
+  decenter_begin 492
+  decenter_end 834
+  from ref 133190 z 3006 to ref 132550
+  role_a_pos 3107 868 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end
