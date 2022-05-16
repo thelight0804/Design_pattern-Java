@@ -11,3 +11,14 @@ local.properties
 .loadpath 
 .recommenders
 .Dsstore
+
+#UML Cache Files
+UML/70.lock
+UML/cpp_includes
+UML/generation_settings
+UML/idl_includes
+UML/java_imports
+UML/python_imports
+UML/stereotypes
+UML/tools
+UML/70.session

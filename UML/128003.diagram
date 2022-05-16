@@ -1,0 +1,143 @@
+format 224
+
+classcanvas 128003 class_ref 128003 // Menu
+  classdiagramsettings member_max_width 0 end
+  xyzwh 492 479 2000 317 181
+end
+classcanvas 128131 class_ref 128131 // category
+  classdiagramsettings member_max_width 0 end
+  xyzwh 395 152 2000 185 137
+end
+classcanvas 128259 class_ref 128259 // UpdateMenu
+  classdiagramsettings member_max_width 0 end
+  xyzwh 785 153 2000 201 137
+end
+classcanvas 128771 class_ref 128387 // Food
+  classdiagramsettings member_max_width 0 end
+  xyzwh 100 81 2000 201 77
+end
+classcanvas 128899 class_ref 128515 // Drink
+  classdiagramsettings member_max_width 0 end
+  xyzwh 95 166 2000 209 79
+end
+classcanvas 129027 class_ref 128643 // Alochol
+  classdiagramsettings member_max_width 0 end
+  xyzwh 95 254 2000 207 83
+end
+classcanvas 129155 class_ref 128771 // SideMenu
+  classdiagramsettings member_max_width 0 end
+  xyzwh 97 349 2000 205 79
+end
+classcanvas 129795 class_ref 128899 // MenuAdd
+  classdiagramsettings member_max_width 0 end
+  xyzwh 1083 115 2000 143 85
+end
+classcanvas 129923 class_ref 129027 // MenuDel
+  classdiagramsettings member_max_width 0 end
+  xyzwh 1088 226 2000 143 85
+end
+classcanvas 130051 class_ref 129155 // OrderEdit
+  classdiagramsettings member_max_width 0 end
+  xyzwh 1092 324 2000 143 85
+end
+classcanvas 130563 class_ref 129283 // BlackBeen
+  classdiagramsettings member_max_width 0 end
+  xyzwh 384 718 2000 133 83
+end
+classcanvas 130691 class_ref 129411 // FrideRice
+  classdiagramsettings member_max_width 0 end
+  xyzwh 544 721 2000 119 77
+end
+classcanvas 130819 class_ref 129539 // Champon
+  classdiagramsettings member_max_width 0 end
+  xyzwh 683 721 2000 127 81
+end
+classcanvas 130947 class_ref 129667 // SweetAndSourPork
+  classdiagramsettings member_max_width 0 end
+  xyzwh 831 723 2000 135 83
+end
+textcanvas 132867 "state"
+  xyzwh 476 234 2000 845 53
+textcanvas 133123 "<<ArrayList>>"
+  xyzwh 782 380 2000 79 15
+packagecanvas 133763 
+  package_ref 128259 // CategoryState
+    xyzwh 85 47 2005 517 389
+end
+packagecanvas 133891 
+  package_ref 128387 // UpdateMenuAction
+    xyzwh 749 59 2005 493 357
+end
+relationcanvas 129411 relation_ref 128515 // <realization>
+  from ref 128899 z 2001 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129539 relation_ref 128643 // <realization>
+  geometry HV
+  decenter_end 41
+  from ref 129027 z 2001 to point 400 293
+  line 132099 z 2001 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129667 relation_ref 128771 // <realization>
+  geometry HV
+  decenter_end 43
+  from ref 129155 z 2001 to point 400 386
+  line 131971 z 2001 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130179 relation_ref 128899 // <realization>
+  from ref 129795 z 2001 to ref 128259
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130307 relation_ref 129027 // <realization>
+  from ref 129923 z 2001 to ref 128259
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130435 relation_ref 129155 // <realization>
+  from ref 130051 z 2001 to ref 128259
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131075 relation_ref 129283 // <generalisation>
+  from ref 130563 z 2001 to ref 128003
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131331 relation_ref 129411 // <directional composition>
+  from ref 128003 z 2001 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131459 relation_ref 129539 // <directional composition>
+  from ref 128003 z 2001 to ref 128259
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131587 relation_ref 129667 // <generalisation>
+  from ref 130691 z 2001 to ref 128003
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131715 relation_ref 129795 // <generalisation>
+  from ref 130819 z 2001 to ref 128003
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131843 relation_ref 129923 // <generalisation>
+  decenter_end 971
+  from ref 130947 z 2001 to ref 128003
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133507 relation_ref 130051 // <realization>
+  from ref 128771 z 2001 to ref 128131
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end
