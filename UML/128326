@@ -1,6 +1,6 @@
 format 224
 "OrderInput" // OrderManage::OrderInput
-  revision 3
+  revision 5
   modified_by 70 "ddoep"
   // class settings
   
@@ -92,19 +92,6 @@ ${members}}
 	
 	
 	
-      end
-
-      attribute 128198 "MAX_ORDER"
-	private explicit_type "int"
-	init_value "100"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
       end
 
       operation 128454 "inputOrder"
