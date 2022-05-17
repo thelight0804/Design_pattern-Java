@@ -60,14 +60,6 @@ textcanvas 132867 "state"
   xyzwh 476 234 2000 845 53
 textcanvas 133123 "<<ArrayList>>"
   xyzwh 782 380 2000 79 15
-packagecanvas 133763 
-  package_ref 128259 // CategoryState
-    xyzwh 85 47 2005 517 389
-end
-packagecanvas 133891 
-  package_ref 128387 // UpdateMenuAction
-    xyzwh 749 59 2005 493 357
-end
 relationcanvas 129411 relation_ref 128515 // <realization>
   from ref 128899 z 2001 to ref 128131
   no_role_a no_role_b

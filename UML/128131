@@ -1,7 +1,7 @@
 format 224
 "UpdateMenu" // UpdateMenu
-  revision 2
-  modified_by 3 "nifskorea"
+  revision 3
+  modified_by 110 "Mina_"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -725,5 +725,4 @@ ${members}}
     deploymentdiagramsettings
      end
   end
-
 end
