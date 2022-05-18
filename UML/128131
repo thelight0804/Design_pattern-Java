@@ -1,6 +1,6 @@
 format 224
 "UpdateMenu" // UpdateMenu
-  revision 3
+  revision 6
   modified_by 110 "Mina_"
   // class settings
   
@@ -51,11 +51,69 @@ format 224
     activitydiagramsettings
      end
     classdiagram 128003 "projectc"
-      classdiagramsettings member_max_width 0 end
-      size A0
+      classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 drawing_language uml end
+      size A4-Landscape
     end
 
-    class 128003 "Menu"
+    class 135022 "Observer"
+      visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}interface ${name}${extends} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 136046 "create"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	
+	
+	
+	
+	
+      end
+
+      operation 142574 "modify"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 142702 "delete"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 141550 "MenuManagement"
       visibility public 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
@@ -67,67 +125,29 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 129411 // <directional composition>
-	relation 129411 *-->
-	  a role_name "" private
+      classrelation 135534 // Observers (<directional composition>)
+	relation 135534 *-->
+	  stereotype "list"
+	  a role_name "Observers" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 135534 // Observers (<directional composition>)
+	  b parent class_ref 135022 // Observer
+      end
+
+      classrelation 135662 // menuRepository (<directional composition>)
+	relation 135662 *-->
+	  a role_name "menuRepository" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 129411 // <directional composition>
-	  b parent class_ref 128131 // category
+	    classrelation_ref 135662 // menuRepository (<directional composition>)
+	  b parent class_ref 141678 // MenuRepository
       end
 
-      classrelation 129539 // <directional composition>
-	relation 129539 *-->
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 129539 // <directional composition>
-	  b parent class_ref 128259 // UpdateMenu
-      end
-
-      attribute 128643 "menu"
-	private explicit_type "String"
-	stereotype "ArrayList"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 128771 "price"
-	private explicit_type "int"
-	stereotype "ArrayList"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 128899 "sale"
-	private explicit_type "float"
-	stereotype "ArrayList"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      operation 129411 "UpdateMenus"
+      operation 142830 "registerObserver"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "um" type class_ref 128259 // UpdateMenu
+	  param in name "observer" type class_ref 135022 // Observer
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -137,10 +157,10 @@ ${members}}
 	
       end
 
-      operation 129539 "CategoryMenus"
+      operation 142958 "removeObserver"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "cm" type class_ref 128131 // category
+	  param in name "observer" type class_ref 135022 // Observer
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -150,10 +170,25 @@ ${members}}
 	
       end
 
-      operation 129795 "getMenu"
+      operation 143214 "createMenu"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "foodType" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 143342 "deleteMenu"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "menu" explicit_type "String"
+	  param in name "name" explicit_type "string"
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -163,12 +198,85 @@ ${members}}
 	
       end
 
-      operation 129923 "getprice"
+      operation 143470 "modifyMenu"
 	public explicit_return_type "void"
-	nparams 1
+	nparams 3
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "targetName" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 141678 "MenuRepository"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 141806 "AppNotificationSender"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 135790 // <realization>
+	relation 135790 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 135790 // <realization>
+	  b parent class_ref 135022 // Observer
+      end
+
+      classrelation 135918 // <realization>
+	relation 135918 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 135918 // <realization>
+	  b parent class_ref 141934 // NotifyElement
+      end
+
+      operation 143982 "create"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "name" explicit_type "string"
 	  param in name "price" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+	
+	
+	
+	
+      end
+
+      operation 144110 "modify"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -176,10 +284,10 @@ ${members}}
 	
       end
 
-      operation 132099 "getSale"
+      operation 144238 "delete"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "sale" explicit_type "float"
+	  param in name "name" explicit_type "string"
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -189,11 +297,42 @@ ${members}}
 	
       end
 
-      operation 132227 "display"
+      operation 144366 "onCreate"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 2
+	  param in name "name" explicit_type "String"
+	  param in name "price" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 144494 "onModify"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 144622 "onDelete"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -202,7 +341,7 @@ ${members}}
       end
     end
 
-    class 128131 "category"
+    class 141934 "NotifyElement"
       visibility public stereotype "interface"
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
@@ -218,11 +357,42 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
-      operation 130947 "CategoryMenus"
+      operation 143598 "onCreate"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 2
+	  param in name "name" explicit_type "String"
+	  param in name "price" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 143726 "onModify"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 143854 "onDelete"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -231,61 +401,8 @@ ${members}};
       end
     end
 
-    class 128259 "UpdateMenu"
-      visibility public stereotype "interface"
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
-${members}}
-"
-      php_decl "${comment}interface ${name}${extends} {
-${members}}
-"
-      python_2_2 python_decl ""
-      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
-${members}};
-"
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      operation 129667 "UpdateMenus"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130051 "UpdatePrice"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 131587 "sale"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 128387 "Food"
-      visibility package 
+    class 142062 "MenuBoardDisplay"
+      visibility public 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
 ${members}}
@@ -296,11 +413,43 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      operation 131075 "CategoryMenus"
+      classrelation 136046 // <realization>
+	relation 136046 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 136046 // <realization>
+	  b parent class_ref 135022 // Observer
+      end
+
+      classrelation 136174 // <realization>
+	relation 136174 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 136174 // <realization>
+	  b parent class_ref 141934 // NotifyElement
+      end
+
+      operation 144750 "create"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 2
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	
+	
+	
+	
+      end
+
+      operation 144878 "modify"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -308,17 +457,65 @@ ${members}}
 	
       end
 
-      classrelation 130051 // <realization>
-	relation 130051 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 130051 // <realization>
-	  b parent class_ref 128131 // category
+      operation 145006 "delete"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 145134 "onCreate"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "name" explicit_type "String"
+	  param in name "price" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 145262 "onModify"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 145390 "onDelete"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
 
-    class 128515 "Drink"
-      visibility package 
+    class 142190 "SMSNotificationSender"
+      visibility public 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
 ${members}}
@@ -329,118 +526,56 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 128515 // <realization>
-	relation 128515 -_-|>
+      classrelation 136302 // <realization>
+	relation 136302 -_-|>
 	  a public
 	    java "${type}"
-	    classrelation_ref 128515 // <realization>
-	  b parent class_ref 128131 // category
+	    classrelation_ref 136302 // <realization>
+	  b parent class_ref 135022 // Observer
       end
 
-      operation 131203 "CategoryMenus"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 128643 "Alochol"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 128643 // <realization>
-	relation 128643 -_-|>
+      classrelation 136430 // <realization>
+	relation 136430 -_-|>
 	  a public
 	    java "${type}"
-	    classrelation_ref 128643 // <realization>
-	  b parent class_ref 128131 // category
+	    classrelation_ref 136430 // <realization>
+	  b parent class_ref 141934 // NotifyElement
       end
 
-      operation 131331 "CategoryMenus"
+      operation 145518 "create"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 2
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
+	
 	
 	
 	
       end
-    end
 
-    class 128771 "SideMenu"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 128771 // <realization>
-	relation 128771 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128771 // <realization>
-	  b parent class_ref 128131 // category
-      end
-
-      operation 131459 "CategoryMenus"
+      operation 145646 "modify"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
   ${body}}
 "
 	
 	
 	
       end
-    end
 
-    class 128899 "MenuAdd"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 128899 // <realization>
-	relation 128899 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128899 // <realization>
-	  b parent class_ref 128259 // UpdateMenu
-      end
-
-      operation 130179 "UpdateMenus"
+      operation 145774 "delete"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 1
+	  param in name "name" explicit_type "string"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -448,11 +583,13 @@ ${members}}
 	
       end
 
-      operation 130307 "UpdatePrice"
+      operation 145902 "onCreate"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 2
+	  param in name "name" explicit_type "String"
+	  param in name "price" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -460,44 +597,28 @@ ${members}}
 	
       end
 
-      operation 131715 "sale"
+      operation 146030 "onModify"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 4
+	  param in name "name" explicit_type "string"
+	  param in name "price" explicit_type "int"
+	  param in name "lastName" explicit_type "string"
+	  param in name "lastPrice" explicit_type "int"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
   ${body}}
 "
 	
 	
 	
       end
-    end
 
-    class 129027 "MenuDel"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 129027 // <realization>
-	relation 129027 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129027 // <realization>
-	  b parent class_ref 128259 // UpdateMenu
-      end
-
-      operation 130435 "UpdateMenus"
+      operation 146158 "onDelete"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 1
+	  param in name "name" explicit_type "string"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -505,217 +626,16 @@ ${members}}
 	
       end
 
-      operation 130563 "UpdatePrice"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
+      attribute 134766 "SubscribedPhoneNumberLIst"
+	private explicit_type "List<String>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	
-	
-	
-      end
-
-      operation 131843 "sale"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 129155 "OrderEdit"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 129155 // <realization>
-	relation 129155 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129155 // <realization>
-	  b parent class_ref 128259 // UpdateMenu
-      end
-
-      operation 130691 "UpdateMenus"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130819 "UpdatePrice"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 131971 "sale"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 129283 "BlackBeen"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 129283 // <generalisation>
-	relation 129283 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129283 // <generalisation>
-	  b parent class_ref 128003 // Menu
-      end
-
-      operation 128643 "display"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 129411 "FrideRice"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 129667 // <generalisation>
-	relation 129667 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129667 // <generalisation>
-	  b parent class_ref 128003 // Menu
-      end
-
-      operation 128771 "display"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 129539 "Champon"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 129795 // <generalisation>
-	relation 129795 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129795 // <generalisation>
-	  b parent class_ref 128003 // Menu
-      end
-
-      operation 128899 "display"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
-  ${body}}
-"
-	
-	
-	
-      end
-    end
-
-    class 129667 "SweetAndSourPork"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      classrelation 129923 // <generalisation>
-	relation 129923 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129923 // <generalisation>
-	  b parent class_ref 128003 // Menu
-      end
-
-      operation 129027 "display"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
-  ${body}}
-"
-	
-	
-	
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
       end
     end
   end
