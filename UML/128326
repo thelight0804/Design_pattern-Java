@@ -1,6 +1,6 @@
 format 224
 "OrderInput" // OrderManage::OrderInput
-  revision 7
+  revision 10
   modified_by 110 "Mina_"
   // class settings
   
@@ -51,8 +51,8 @@ format 224
     activitydiagramsettings
      end
     classdiagram 128198 "classDiagram"
-      classdiagramsettings member_max_width 0 show_relation_visibility yes end
-      size 5000x4756
+      classdiagramsettings draw_all_relations no member_max_width 0 drawing_language java show_relation_visibility yes end
+      size A3-Landscape
     end
 
     class 128326 "RemoteControl"

@@ -2,108 +2,104 @@ format 224
 
 classcanvas 128198 class_ref 128326 // RemoteControl
   classdiagramsettings member_max_width 0 end
-  xyz 792.4 127.24 2000
+  xyz 345.58 124.98 2000
 end
 classcanvas 128238 class_ref 128110 // FoodOrderFactory
   classdiagramsettings member_max_width 0 end
-  xyz 136.3 639.4 2005
+  xyz 214.18 624.78 2005
 end
 classcanvas 128326 class_ref 128454 // Order
   classdiagramsettings member_max_width 0 end
-  xyz 1386.7 150.4 2000
+  xyz 948.4 147.96 2000
 end
 classcanvas 128454 class_ref 128582 // NoOrder
   classdiagramsettings member_max_width 0 end
-  xyz 1747 156.2 2000
+  xyz 1299.68 153.06 2000
 end
 classcanvas 128750 class_ref 128238 // DrinkOrderFactory
   classdiagramsettings member_max_width 0 end
-  xyz 820.3 646.9 2005
+  xyz 629.25 624.78 2005
 end
 classcanvas 129134 class_ref 128366 // AlcoholOrderFactory
   classdiagramsettings member_max_width 0 end
-  xyz 1515.6 636.1 2005
-end
-classcanvas 129222 class_ref 128710 // FoodInputOrder
-  classdiagramsettings member_max_width 0 end
-  xyz 152.3 448.3 2000
+  xyz 1011.98 624.78 2005
 end
 classcanvas 129350 class_ref 128838 // Food
   classdiagramsettings member_max_width 0 end
-  xyz 48.7 845.5 2000
+  xyz 68.72 778.05 2000
 end
 classcanvas 129518 class_ref 128494 // SideMenuOrderFactory
   classdiagramsettings member_max_width 0 end
-  xyz 2265.5 624.1 2005
+  xyz 1438.64 624.78 2005
 end
 classcanvas 129734 class_ref 135366 // FoodCancelOrder
   classdiagramsettings member_max_width 0 end
-  xyz 505.9 449.1 3005
+  xyz 404 460.98 3005
+end
+classcanvas 129902 class_ref 128710 // FoodInputOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 127.3 460.98 2011
 end
 classcanvas 130374 class_ref 135622 // Drink
   classdiagramsettings member_max_width 0 end
-  xyz 787.7 843.5 2000
+  xyz 530.16 777.28 2000
 end
 classcanvas 130502 class_ref 135750 // DrinkInputOrder
   classdiagramsettings member_max_width 0 end
-  xyz 832.8 456.1 2006
+  xyz 596.05 460.98 2006
 end
 classcanvas 131014 class_ref 135878 // DrinkCancelOrder
   classdiagramsettings member_max_width 0 end
-  xyz 1170.9 449 3005
+  xyz 776.1 460.98 3005
 end
 classcanvas 131398 class_ref 136006 // Alcohol
   classdiagramsettings member_max_width 0 end
-  xyz 1507.8 854.4 2000
+  xyz 925.46 777.28 2000
 end
 classcanvas 131526 class_ref 136134 // AlcoholInputOrder
   classdiagramsettings member_max_width 0 end
-  xyz 1522.7 457.9 2006
+  xyz 966.38 460.98 2006
 end
 classcanvas 132038 class_ref 136262 // AlcoholCancelOrder
   classdiagramsettings member_max_width 0 end
-  xyz 1877.5 461.6 2006
+  xyz 1181.08 460.98 2006
 end
 classcanvas 132550 class_ref 136518 // SideMenu
   classdiagramsettings member_max_width 0 end
-  xyz 2194.4 850.2 2005
+  xyz 1284.58 778.05 2005
 end
 classcanvas 132678 class_ref 136646 // SideMenuInputOrder
   classdiagramsettings member_max_width 0 end
-  xyz 2277.9 462.4 2006
+  xyz 1378.84 460.98 2006
 end
 classcanvas 133190 class_ref 136774 // SideMenuOutputOrder
   classdiagramsettings member_max_width 0 end
-  xyz 2713.5 463.5 3005
+  xyz 1627.5 460.98 3005
 end
 note 135878 "Older menu"
-  xyzwh 94.5 381.4 2000 2999 433
+  xyzwh 123.1 392.38 2000 1776 359
 relationcanvas 128366 relation_ref 128110 // <dependency>
+  decenter_begin 518
   from ref 128238 z 2006 to ref 129350
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 128582 relation_ref 128198 // <directional aggregation>
-  from ref 128198 z 2001 stereotype "<<list>>" xyz 1264.5 192.5 3000 to ref 128326
-  role_a_pos 1296 163 3000 no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 128622 relation_ref 128238 // <directional composition>
-  from ref 129222 z 2006 to ref 128238
-  role_a_pos 314 620 3000 no_role_b
+  from ref 128198 z 2001 stereotype "<<list>>" xyz 788 187.5 3000 to ref 128326
+  role_a_pos 857 158 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 128710 relation_ref 128326 // <directional aggregation>
   geometry VHV unfixed
-  from ref 128198 z 2001 stereotype "<<list>>" xyz 1019 106 3000 to point 993.5 48
-  line 128838 z 2001 to point 1519.9 48
+  from ref 128198 z 2001 stereotype "<<list>>" xyz 546 103 3000 to point 518 44.86
+  line 128838 z 2001 to point 998 45.86
   line 128966 z 2001 to ref 128326
-  role_a_pos 1528 132 3000 no_role_b
+  role_a_pos 1010 126 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 128878 relation_ref 128366 // <directional composition>
   from ref 130502 z 2007 to ref 128750
-  role_a_pos 983 625 3000 no_role_b
+  role_a_pos 699 602 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129006 relation_ref 128494 // <dependency>
@@ -123,15 +119,7 @@ relationcanvas 129262 relation_ref 128622 // <dependency>
 end
 relationcanvas 129390 relation_ref 128750 // <directional composition>
   from ref 131526 z 2007 to ref 129134
-  role_a_pos 1701 615 3000 no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 129606 relation_ref 135110 // <realization>
-  geometry VHV
-  from ref 129222 z 2001 to point 300.8 332.6
-  line 133574 z 2001 to point 1519.9 332.6
-  line 133702 z 2001 to ref 128326
-  no_role_a no_role_b
+  role_a_pos 1085 602 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129646 relation_ref 128878 // <dependency>
@@ -141,62 +129,51 @@ relationcanvas 129646 relation_ref 128878 // <dependency>
 end
 relationcanvas 129774 relation_ref 129006 // <directional composition>
   from ref 132678 z 2007 to ref 129518
-  role_a_pos 2466 604 3000 no_role_b
+  role_a_pos 1519 602 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129990 relation_ref 135366 // <realization>
-  geometry VHV
-  from ref 129734 z 3006 to point 640 332
-  line 133830 z 3006 to point 1519 332
-  line 133958 z 3006 to ref 128326
+  from ref 129734 z 3006 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
+relationcanvas 130030 relation_ref 135110 // <realization>
+  from ref 129902 z 2012 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130414 relation_ref 128238 // <directional composition>
+  from ref 129902 z 2012 to ref 128238
+  role_a_pos 283 602 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
 relationcanvas 130758 relation_ref 135622 // <realization>
-  geometry VHV
-  from ref 130502 z 2007 to point 967 334
-  line 134086 z 2007 to point 1519 334
-  line 134214 z 2007 to ref 128326
+  from ref 130502 z 2007 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 131142 relation_ref 135878 // <realization>
-  geometry VHV
-  from ref 131014 z 3006 to point 1304 332
-  line 134342 z 3006 to point 1519 332
-  line 134470 z 3006 to ref 128326
+  from ref 131014 z 3006 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 131654 relation_ref 136134 // <realization>
-  geometry VHV
-  from ref 131526 z 2007 to point 1657.7 335.1
-  line 134598 z 2007 to point 1519.3 335.1
-  line 134726 z 2007 to ref 128326
+  from ref 131526 z 2007 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 132166 relation_ref 136518 // <realization>
-  geometry VHV unfixed
-  from ref 132038 z 2007 to point 2010 338
-  line 134854 z 2007 to point 1519 338
-  line 134982 z 2007 to ref 128326
+  from ref 132038 z 2007 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 132934 relation_ref 136902 // <realization>
-  geometry VHV unfixed
-  from ref 132678 z 2007 to point 2413.5 338
-  line 135110 z 2007 to point 1519.3 338
-  line 135238 z 2007 to ref 128326
+  from ref 132678 z 2007 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 133318 relation_ref 137158 // <realization>
-  geometry VHV unfixed
-  from ref 133190 z 3006 to point 2853.5 338
-  line 135366 z 3006 to point 1519.9 338
-  line 135494 z 3006 to ref 128326
+  from ref 133190 z 3006 to ref 128326
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
