@@ -1,7 +1,7 @@
 format 224
 "UpdateMenu" // UpdateMenu
-  revision 6
-  modified_by 110 "Mina_"
+  revision 8
+  modified_by 70 "ddoep"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -50,7 +50,7 @@ format 224
     
     activitydiagramsettings
      end
-    classdiagram 128003 "projectc"
+    classdiagram 128003 "classDiagram"
       classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 drawing_language uml end
       size A4-Landscape
     end

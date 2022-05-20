@@ -1,6 +1,6 @@
 format 224
 "OrderManage" // OrderManage
-  revision 1
+  revision 2
   modified_by 70 "ddoep"
   // class settings
   
@@ -30,5 +30,7 @@ format 224
   activitydiagramsettings
    end
   
-  package_ref 128326 // OrderInput
+  package_ref 128326 // OrderInput_old
+
+  package_ref 134854 // OrderInput
 end
