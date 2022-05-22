@@ -1,7 +1,7 @@
 format 224
 "OrderInput" // OrderManage::OrderInput
-  revision 1
-  modified_by 70 "ddoep"
+  revision 2
+  modified_by 110 "Mina_"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -52,7 +52,7 @@ format 224
      end
     classdiagram 134726 "classDiagram"
       classdiagramsettings member_max_width 0 end
-      size A4
+      size A4-Landscape
     end
 
     class 143302 "ServeType"
@@ -107,13 +107,14 @@ ${members}};
 	
 	
       end
-
     end
 
     class 143558 "Order"
       abstract visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -123,6 +124,8 @@ ${members}};
       classrelation 144710 // orderType (<directional composition>)
 	relation 144710 *-->
 	  a role_name "orderType" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
 	    classrelation_ref 144710 // orderType (<directional composition>)
 	  b parent class_ref 143430 // OrderType
       end
@@ -130,6 +133,8 @@ ${members}};
       classrelation 144838 // serveType (<directional composition>)
 	relation 144838 *-->
 	  a role_name "serveType" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
 	    classrelation_ref 144838 // serveType (<directional composition>)
 	  b parent class_ref 143302 // ServeType
       end
@@ -182,6 +187,30 @@ ${members}};
 	
 	
       end
+
+      operation 153070 "getMenuPrices"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 153198 "getOrderSheet"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 143686 "Call"
@@ -199,6 +228,16 @@ ${members}};
 	  a public
 	    classrelation_ref 143686 // <realization>
 	  b parent class_ref 143430 // OrderType
+      end
+
+      operation 152686 "takeOrder"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
       end
     end
 
@@ -218,6 +257,16 @@ ${members}};
 	    classrelation_ref 143814 // <realization>
 	  b parent class_ref 143430 // OrderType
       end
+
+      operation 152814 "takeOrder"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
     end
 
     class 143942 "Visit"
@@ -236,6 +285,16 @@ ${members}};
 	    classrelation_ref 143942 // <realization>
 	  b parent class_ref 143430 // OrderType
       end
+
+      operation 152942 "takeOrder"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
     end
 
     class 144070 "CallOrder"
@@ -248,6 +307,26 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
+      classrelation 142958 // <generalisation>
+	relation 142958 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 142958 // <generalisation>
+	  b parent class_ref 143558 // Order
+      end
+
+      operation 153710 "CallOrder"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "serveType" type class_ref 143302 // ServeType
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 144198 "AppOrder"
@@ -260,6 +339,26 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
+      classrelation 143086 // <generalisation>
+	relation 143086 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 143086 // <generalisation>
+	  b parent class_ref 143558 // Order
+      end
+
+      operation 153838 "AppOrder"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "serveType" type class_ref 143302 // ServeType
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 144326 "VisitOrder"
@@ -272,6 +371,26 @@ ${members}};
       explicit_switch_type ""
       mysql_decl ""
       
+      classrelation 143342 // <generalisation>
+	relation 143342 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 143342 // <generalisation>
+	  b parent class_ref 143558 // Order
+      end
+
+      operation 153966 "VisitOrder"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "serveType" type class_ref 143302 // ServeType
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 144454 "Dining"
@@ -289,6 +408,16 @@ ${members}};
 	  a public
 	    classrelation_ref 144070 // <realization>
 	  b parent class_ref 143302 // ServeType
+      end
+
+      operation 153326 "Serving"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
       end
     end
 
@@ -308,6 +437,16 @@ ${members}};
 	    classrelation_ref 144198 // <realization>
 	  b parent class_ref 143302 // ServeType
       end
+
+      operation 153454 "Serving"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
     end
 
     class 144710 "TakeOut"
@@ -325,6 +464,16 @@ ${members}};
 	  a public
 	    classrelation_ref 144326 // <realization>
 	  b parent class_ref 143302 // ServeType
+      end
+
+      operation 153582 "Serving"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
       end
     end
   end
