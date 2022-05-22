@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="679218cb-c113-42e0-b520-a343d19702a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UML/128131" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UML/128131" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UML/128198" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UML/128198" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UML/128326" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UML/134726.diagram" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UML/134726.diagram" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UML/134854" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UML/134854" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../UML/UML.prj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../UML/UML.prj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/model/order/Alcohol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/model/order/Drink.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/model/order/Food.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/model/order/SideMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/CancelOrders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/InputOrders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/RemoteControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/factory/AlcoholOrderFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/factory/DrinkOrderFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/factory/FoodOrderFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/order/factory/SideMenuOrderFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/stock/Ingredient.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="29VbWCo9b6MmmD8IN8IFI3fHLpC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="679218cb-c113-42e0-b520-a343d19702a5" name="Changes" comment="" />
+      <created>1653201229120</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653201229120</updated>
+      <workItem from="1653201230278" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

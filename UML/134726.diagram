@@ -10,7 +10,7 @@ classcanvas 128198 class_ref 143430 // OrderType
 end
 classcanvas 128326 class_ref 143558 // Order
   classdiagramsettings member_max_width 0 end
-  xyzwh 399 344 2000 277 129
+  xyzwh 399 344 2000 277 151
 end
 classcanvas 128454 class_ref 143686 // Call
   classdiagramsettings member_max_width 0 end
@@ -96,12 +96,12 @@ relationcanvas 130246 relation_ref 144326 // <realization>
 end
 relationcanvas 131398 relation_ref 144838 // <directional composition>
   from ref 128326 z 2001 to ref 128070
-  role_a_pos 620 247 3000 no_role_b
+  role_a_pos 625 258 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 131654 relation_ref 144710 // <directional composition>
   from ref 128326 z 2001 to ref 128198
-  role_a_pos 465 246 3000 no_role_b
+  role_a_pos 477 257 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 end
