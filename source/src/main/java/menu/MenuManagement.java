@@ -25,10 +25,9 @@ public class MenuManagement extends NotifyElement {
         this.onCreate(name, price);
     }
 
-    public void modifyMenu(String name, int price) {
+    public void modifyMenu(String prevName, String name, int price) {
         try{
-            Menu menu = this.menuRepository.getMenuByName(name).orElseThrow(EntityNotFoundException::new);
-            String prevName = menu.getName();
+            Menu menu = this.menuRepository.getMenuByName(prevName).orElseThrow(EntityNotFoundException::new);
             int prevPrice = menu.getPrice();
             menu.setName(name);
             menu.setPrice(price);
@@ -57,7 +56,7 @@ public class MenuManagement extends NotifyElement {
         while(option != 4) {
             ArrayList<Menu> menuItems = this.menuRepository.getAllMenuItems();
             System.out.println("Menu Management ---------- \n" +
-                    "Current menu items: \n");
+                    "Current menu items:");
             // Print menu list
             menuItems.forEach(menu -> System.out.println(menu.toString()));
             // Print Management options
@@ -76,6 +75,7 @@ public class MenuManagement extends NotifyElement {
             }
             try {
                 switch (option) {
+                    // Create menu item
                     case 1:
                         System.out.print("Name: ");
                         String name = br.readLine();
@@ -83,18 +83,23 @@ public class MenuManagement extends NotifyElement {
                         int price = Integer.parseInt(br.readLine());
                         this.createMenu(name, price);
                         break;
+                    // Modify menu item
                     case 2:
-                        System.out.print("Name: ");
+                        System.out.print("Menu: ");
+                        String prevName = br.readLine();
+                        System.out.print("Name to change: ");
                         name = br.readLine();
-                        System.out.print("Price: ");
+                        System.out.print("Price to change: ");
                         price = Integer.parseInt(br.readLine());
-                        this.modifyMenu(name, price);
+                        this.modifyMenu(prevName, name, price);
                         break;
+                    // Delete menu item
                     case 3:
                         System.out.print("Name: ");
                         name = br.readLine();
                         this.deleteMenu(name);
                         break;
+                    // Exit
                     case 4:
                         break;
                     default:
