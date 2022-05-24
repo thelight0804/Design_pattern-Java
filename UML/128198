@@ -1,7 +1,7 @@
 format 224
 "OrderManage" // OrderManage
-  revision 2
-  modified_by 70 "ddoep"
+  revision 4
+  modified_by 60 "¹Ú»óÇö"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -30,7 +30,5 @@ format 224
   activitydiagramsettings
    end
   
-  package_ref 128326 // OrderInput_old
-
   package_ref 134854 // OrderInput
 end

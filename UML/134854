@@ -1,7 +1,7 @@
 format 224
 "OrderInput" // OrderManage::OrderInput
-  revision 2
-  modified_by 110 "Mina_"
+  revision 5
+  modified_by 60 "¹Ú»óÇö"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -30,6 +30,8 @@ format 224
   activitydiagramsettings
    end
   
+  java_dir "F:\\Workspace\\GitHub\\Team project\\Design_pattern_Java\\source\\src\\main\\java"
+  java_package "order.input"
   classview 134726 "classView"
     
     classdiagramsettings member_max_width 0 end
@@ -50,6 +52,7 @@ format 224
     
     activitydiagramsettings
      end
+    associated_deployment_view deploymentview_ref 134726 // deploymentView
     classdiagram 134726 "classDiagram"
       classdiagramsettings member_max_width 0 end
       size A4-Landscape
@@ -214,9 +217,11 @@ ${members}}
     end
 
     class 143686 "Call"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -242,9 +247,11 @@ ${members}}
     end
 
     class 143814 "App"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -270,9 +277,11 @@ ${members}}
     end
 
     class 143942 "Visit"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -298,9 +307,11 @@ ${members}}
     end
 
     class 144070 "CallOrder"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -330,9 +341,11 @@ ${members}}
     end
 
     class 144198 "AppOrder"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -362,9 +375,11 @@ ${members}}
     end
 
     class 144326 "VisitOrder"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -394,9 +409,11 @@ ${members}}
     end
 
     class 144454 "Dining"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -422,9 +439,11 @@ ${members}}
     end
 
     class 144582 "Delivery"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -450,9 +469,11 @@ ${members}}
     end
 
     class 144710 "TakeOut"
-      visibility package 
+      visibility public 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -482,5 +503,172 @@ ${members}}
     //deployment diagram settings
     deploymentdiagramsettings
      end
+    artifact 129340 "ServeType"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      php_src "<?php
+${comment}
+${namespace}
+${require_once}
+${use}
+${definition}
+?>
+"
+      idl_src "#ifndef ${MODULE}_${NAME}_H
+#define ${MODULE}_${NAME}_H
+
+${comment}
+${includes}
+${module_start}
+${definition}
+${module_end}
+#endif
+"
+      associated_elems
+	class_ref 143302 // ServeType
+      end
+    end
+
+    artifact 129468 "OrderType"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      php_src "<?php
+${comment}
+${namespace}
+${require_once}
+${use}
+${definition}
+?>
+"
+      idl_src "#ifndef ${MODULE}_${NAME}_H
+#define ${MODULE}_${NAME}_H
+
+${comment}
+${includes}
+${module_start}
+${definition}
+${module_end}
+#endif
+"
+      associated_elems
+	class_ref 143430 // OrderType
+      end
+    end
+
+    artifact 129596 "Order"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 143558 // Order
+      end
+    end
+
+    artifact 129724 "App"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 143814 // App
+      end
+    end
+
+    artifact 129852 "Call"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 143686 // Call
+      end
+    end
+
+    artifact 129980 "Visit"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 143942 // Visit
+      end
+    end
+
+    artifact 130108 "CallOrder"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 144070 // CallOrder
+      end
+    end
+
+    artifact 130236 "AppOrder"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 144198 // AppOrder
+      end
+    end
+
+    artifact 130364 "VisitOrder"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 144326 // VisitOrder
+      end
+    end
+
+    artifact 130492 "Dining"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 144454 // Dining
+      end
+    end
+
+    artifact 130620 "Delivery"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 144582 // Delivery
+      end
+    end
+
+    artifact 130748 "TakeOut"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 144710 // TakeOut
+      end
+    end
   end
 end
