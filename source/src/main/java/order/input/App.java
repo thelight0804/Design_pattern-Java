@@ -1,10 +1,12 @@
 package order.input;
 
 /**
- * 어플로 주문했을 때 작용되는 클래스
+ * 주문 방식을 어플로 정하는 클래스
  */
 public class App implements OrderType{
-    public void takeOrder(){
-        System.out.println("Order to App");
+    public void takeOrder(ServeType serveType){
+        String order = "어플";
+        String serve = serveType.serving();
+        System.out.println("[" + order + serve + " 주문]");
     }
 }
