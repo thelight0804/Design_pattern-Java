@@ -46,7 +46,7 @@ public class SMSNotificationSender implements Observer {
     public void modify(String lastName, int lastPrice, String name, int price) {
         System.out.println("Observer Detected modify signal -------");
         // Is it a name change?
-        if (!lastName.equals(name)) {
+        if (!lastName.equals(name) && lastPrice == price) {
             sendMessageToSubscribedUser(new Object[]{name, lastName}, MODIFY_MENU_NAME_MESSAGE_FORMAT);
         }
         // Is it a price increase?

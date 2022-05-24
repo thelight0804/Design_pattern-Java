@@ -2,6 +2,8 @@ package menu;
 
 import menu.interfaces.NotifyElement;
 import menu.interfaces.Observer;
+import menu.observers.AppNotificationSender;
+import menu.observers.OutdoorBoardModifierModule;
 import menu.observers.SMSNotificationSender;
 import repository.MenuRepository;
 import repository.exception.EntityNotFoundException;
@@ -114,11 +116,19 @@ public class MenuManagement extends NotifyElement {
     // Run this method to do example runs
     // Warning: Do not use this method in production
     public static void main(String[] args) {
+        // Initialize MenuManagement Service
         MenuManagement menuManagement = new MenuManagement();
+        // Create Observer
         SMSNotificationSender smsNotificationSender = new SMSNotificationSender();
         smsNotificationSender.subscribe("+82 10-1234-1234");
         smsNotificationSender.subscribe("+82 10-1234-5678");
+        AppNotificationSender appNotificationSender = new AppNotificationSender();
+        OutdoorBoardModifierModule outdoorBoardModifierModule = new OutdoorBoardModifierModule();
+        // Add observer
         menuManagement.addObserver(smsNotificationSender);
+        menuManagement.addObserver(appNotificationSender);
+        menuManagement.addObserver(outdoorBoardModifierModule);
+        // Run service
         menuManagement.run();
     }
 }
