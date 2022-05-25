@@ -1,7 +1,7 @@
 format 224
 "OrderInput" // OrderManage::OrderInput
-  revision 5
-  modified_by 60 "¹Ú»óÇö"
+  revision 6
+  modified_by 70 "ddoep"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -75,7 +75,7 @@ ${members}};
       mysql_decl ""
       
       operation 144838 "Serving"
-	public explicit_return_type "void"
+	public explicit_return_type "String"
 	nparams 0
 	
 	
@@ -103,9 +103,12 @@ ${members}};
       
       operation 144710 "takeOrder"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 1
+	  param in name "ServeType" explicit_type "serveType"
 	
-	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
 	
 	
 	
@@ -126,7 +129,7 @@ ${members}}
       
       classrelation 144710 // orderType (<directional composition>)
 	relation 144710 *-->
-	  a role_name "orderType" private
+	  a role_name "orderType" protected
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
 	    classrelation_ref 144710 // orderType (<directional composition>)
@@ -135,7 +138,7 @@ ${members}}
 
       classrelation 144838 // serveType (<directional composition>)
 	relation 144838 *-->
-	  a role_name "serveType" private
+	  a role_name "serveType" protected
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
 	    classrelation_ref 144838 // serveType (<directional composition>)
@@ -154,11 +157,12 @@ ${members}}
 	MysqlColumn
       end
 
-      operation 144966 "runOrder"
-	public explicit_return_type "void"
-	nparams 0
+      operation 152646 "Order"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "menuList" explicit_type "List<menu>"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
   ${body}}
 "
 	
@@ -166,7 +170,7 @@ ${members}}
 	
       end
 
-      operation 145094 "runServe"
+      operation 144966 "runOrder"
 	public explicit_return_type "void"
 	nparams 0
 	
@@ -205,15 +209,17 @@ ${members}}
 
       operation 153198 "getOrderSheet"
 	public explicit_return_type "string"
-	nparams 0
+	nparams 1
+	  param in name "menuList" explicit_type "List<Menu>"
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
 	
 	
       end
+
     end
 
     class 143686 "Call"
@@ -235,11 +241,14 @@ ${members}}
 	  b parent class_ref 143430 // OrderType
       end
 
-      operation 152686 "takeOrder"
+      operation 152006 "takeOrder"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 1
+	  param in name "ServeType" explicit_type "serveType"
 	
-	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
 	
 	
 	
@@ -265,11 +274,14 @@ ${members}}
 	  b parent class_ref 143430 // OrderType
       end
 
-      operation 152814 "takeOrder"
+      operation 151878 "takeOrder"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 1
+	  param in name "ServeType" explicit_type "serveType"
 	
-	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
 	
 	
 	
@@ -295,11 +307,14 @@ ${members}}
 	  b parent class_ref 143430 // OrderType
       end
 
-      operation 152942 "takeOrder"
+      operation 151750 "takeOrder"
 	public explicit_return_type "void"
-	nparams 0
+	nparams 1
+	  param in name "ServeType" explicit_type "serveType"
 	
-	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
 	
 	
 	
@@ -427,8 +442,8 @@ ${members}}
 	  b parent class_ref 143302 // ServeType
       end
 
-      operation 153326 "Serving"
-	public explicit_return_type "void"
+      operation 152134 "Serving"
+	public explicit_return_type "String"
 	nparams 0
 	
 	
@@ -457,8 +472,8 @@ ${members}}
 	  b parent class_ref 143302 // ServeType
       end
 
-      operation 153454 "Serving"
-	public explicit_return_type "void"
+      operation 152262 "Serving"
+	public explicit_return_type "String"
 	nparams 0
 	
 	
@@ -487,8 +502,8 @@ ${members}}
 	  b parent class_ref 143302 // ServeType
       end
 
-      operation 153582 "Serving"
-	public explicit_return_type "void"
+      operation 152390 "Serving"
+	public explicit_return_type "String"
 	nparams 0
 	
 	
