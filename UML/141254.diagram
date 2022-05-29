@@ -1,0 +1,125 @@
+format 224
+
+classcanvas 128070 class_ref 151238 // CommuteManager
+  classdiagramsettings member_max_width 0 end
+  xyz 27 59 2000
+end
+classcanvas 128198 class_ref 151366 // CommuteCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 109 654 2000
+end
+classcanvas 129094 class_ref 157894 // Employee
+  classdiagramsettings member_max_width 0 end
+  xyz 901 107 2000
+end
+classcanvas 129222 class_ref 158022 // OnWorkCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 423 609 2000
+end
+classcanvas 129350 class_ref 158150 // OffWorkCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 423 697 2000
+end
+classcanvas 129478 class_ref 158278 // DeliveryEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 450 380 2000
+end
+classcanvas 129606 class_ref 158406 // DiningEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 690 382 2000
+end
+classcanvas 129734 class_ref 158534 // KitchenEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 921 383 2000
+end
+classcanvas 130118 class_ref 158662 // CommandReceiver
+  classdiagramsettings member_max_width 0 end
+  xyz 940 650 2000
+end
+note 131526 "Database Section"
+  xyzwh 876 70 1995 185 135
+note 132422 "Invoker"
+  xyzwh 7 28 1995 787 193
+note 132550 "Command"
+  xyzwh 75 623 1995 207 125
+note 132678 "Concrete Command"
+  xyzwh 404 571 1995 407 217
+note 132806 "Receiver"
+  xyzwh 429 349 1995 737 143
+relationcanvas 128582 relation_ref 151622 // <directional composition>
+  decenter_begin 83
+  from ref 128070 z 2001 stereotype "<<list>>" xyz 31 282.5 3000 to ref 128198
+  role_a_pos 27 592 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128966 relation_ref 151878 // <directional composition>
+  decenter_begin 386
+  from ref 128070 z 2001 stereotype "<<list>>" xyz 314.5 288.5 3000 to ref 128198
+  role_a_pos 239 588 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129862 relation_ref 158406 // <realization>
+  decenter_begin 545
+  from ref 129222 z 2001 to ref 128198
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129990 relation_ref 158534 // <realization>
+  decenter_begin 518
+  from ref 129350 z 2001 to ref 128198
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130246 relation_ref 158662 // <realization>
+  decenter_begin 583
+  decenter_end 90
+  from ref 129478 z 2001 to ref 130118
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130374 relation_ref 158790 // <realization>
+  decenter_begin 582
+  decenter_end 307
+  from ref 129606 z 2001 to ref 130118
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130502 relation_ref 158918 // <realization>
+  decenter_end 569
+  from ref 129734 z 2001 to ref 130118
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131142 relation_ref 159430 // <association>
+  decenter_begin 505
+  from ref 129222 z 2001 to ref 130118
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131270 relation_ref 159558 // <association>
+  decenter_begin 597
+  from ref 129350 z 2001 to ref 130118
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132038 relation_ref 159686 // <directional composition>
+  decenter_begin 505
+  from ref 129478 z 2001 to ref 129094
+  role_a_pos 711 295 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132166 relation_ref 159814 // <directional composition>
+  decenter_begin 514
+  decenter_end 375
+  from ref 129606 z 2001 to ref 129094
+  role_a_pos 890 293 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132294 relation_ref 159942 // <directional composition>
+  decenter_begin 554
+  decenter_end 722
+  from ref 129734 z 2001 to ref 129094
+  role_a_pos 1041 292 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end
