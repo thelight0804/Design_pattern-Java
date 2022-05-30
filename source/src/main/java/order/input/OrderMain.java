@@ -19,8 +19,8 @@ public class OrderMain {
         
         //주문 추가
         List<Menu> menuList = new ArrayList<Menu>();
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
 
         //전화 + 홀 주문
         CallOrder callDiningOrder = new CallOrder(menuList, new Dining());
@@ -32,12 +32,12 @@ public class OrderMain {
 
         //전화 + 배달 주문
         menuList.clear(); //주문서 초기화
-        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
 
         CallOrder callDeliveryOrder = new CallOrder(menuList, new Delivery());
         callDeliveryOrder.runOrder();
@@ -48,7 +48,7 @@ public class OrderMain {
 
         //전화 + 포장 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
 
         CallOrder callTakeOutOrder = new CallOrder(menuList, new TakeOut());
         callTakeOutOrder.runOrder();
@@ -59,9 +59,9 @@ public class OrderMain {
 
         //어플 + 홀 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
 
         AppOrder appDiningOrder = new AppOrder(menuList, new Dining());
         appDiningOrder.runOrder();
@@ -72,10 +72,10 @@ public class OrderMain {
 
         //어플 + 배달 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
 
         AppOrder appDeliveryOrder = new AppOrder(menuList, new Delivery());
         appDeliveryOrder.runOrder();
@@ -86,10 +86,10 @@ public class OrderMain {
 
         //어플 + 포장 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow(null));
 
         AppOrder appTakeOutOrder = new AppOrder(menuList, new TakeOut());
         appTakeOutOrder.runOrder();
@@ -100,9 +100,9 @@ public class OrderMain {
 
         //방문 + 홀 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("팔보채").orElseThrow(null));
 
         VisitOrder visitDiningOrder = new VisitOrder(menuList, new Dining());
         visitDiningOrder.runOrder();
@@ -113,9 +113,9 @@ public class OrderMain {
 
         //방문 + 배달 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
 
         VisitOrder visitDeliveryOrder = new VisitOrder(menuList, new Delivery());
         visitDeliveryOrder.runOrder();
@@ -126,13 +126,13 @@ public class OrderMain {
 
         //방문 + 포장 주문
         menuList.clear();
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
-        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow());
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("탕수육").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짜장면").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
+        menuList.add(menuRepository.getMenuByName("짬뽕").orElseThrow(null));
 
         VisitOrder visitTakeOutOrder = new VisitOrder(menuList, new TakeOut());
         visitTakeOutOrder.runOrder();
