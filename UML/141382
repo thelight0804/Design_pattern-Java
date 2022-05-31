@@ -1,7 +1,7 @@
 format 224
 "commute" // commute
-  revision 3
-  modified_by 70 "ddoep"
+  revision 4
+  modified_by 110 "Mina_"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -420,6 +420,37 @@ ${members}}
 	    classrelation_ref 160198 // employee (<directional composition>)
 	  b parent class_ref 157894 // Employee
       end
+
+      classrelation 149998 // <dependency>
+	relation 149998 -_->
+	  a public
+	    classrelation_ref 149998 // <dependency>
+	  b parent class_ref 148718 // DeliveryEmployeeChecklist
+      end
+
+      operation 160494 "checkPassword"
+	private explicit_return_type "bool"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 160622 "checkChecklistStatus"
+	private explicit_return_type "bool"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 158406 "DiningEmployee"
@@ -486,6 +517,18 @@ ${members}}
 "
 	    classrelation_ref 160326 // employee (<directional composition>)
 	  b parent class_ref 157894 // Employee
+      end
+
+      operation 160750 "checkPassword"
+	private explicit_return_type "bool"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
 
@@ -554,6 +597,18 @@ ${members}}
 	    classrelation_ref 160454 // employee (<directional composition>)
 	  b parent class_ref 157894 // Employee
       end
+
+      operation 160878 "checkPassword"
+	private explicit_return_type "bool"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 158662 "CommandReceiver"
@@ -603,6 +658,99 @@ ${members}};
       classrelation 160070 // <association>
 	relation_ref 159558 // <association>
       end
+    end
+
+    class 148718 "DeliveryEmployeeChecklist"
+      visibility public stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      php_decl "${comment}${visibility}final class ${name} {
+${items}}
+"
+      python_2_2 python_decl "class ${name}:
+${docstring}${members}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 141294 "HELMET_EQUIPEMENT_STATUS"
+	public type class_ref 148718 // DeliveryEmployeeChecklist
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141422 "FUEL_STATUS"
+	public type class_ref 148718 // DeliveryEmployeeChecklist
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141550 "GPS_STATUS"
+	public type class_ref 148718 // DeliveryEmployeeChecklist
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141678 "SPEED_LIMITER_STATUS"
+	public type class_ref 148718 // DeliveryEmployeeChecklist
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141806 "question"
+	private explicit_type "string"
+	stereotype "attribute"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141934 "answer"
+	private explicit_type "bool"
+	stereotype "attribute"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
     end
   end
 
