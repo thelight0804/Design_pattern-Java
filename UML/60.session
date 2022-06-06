@@ -1,16 +1,21 @@
-window_sizes 2560 1361 600 1954 1188 120
+window_sizes 2400 1271 600 1794 1098 120
 
 diagrams
-  active  classdiagram_ref 134726 // classDiagram
+  classdiagram_ref 134726 // classDiagram
     1954 1188 100 A4-Landscape 0 0
+  classdiagram_ref 128110 // diagram
+    1563 950 100 A4-Landscape 0 0
+  active  classdiagram_ref 141254 // classDiagram
+    1794 1098 100 A4-Landscape 0 0
 end
 show_stereotypes
-selected 
-  package_ref 134854 // OrderInput
+selected classdiagram_ref 141254 // classDiagram
 open
   
-  package_ref 128131 // UpdateMenu
+package_ref 128131 // UpdateMenu
   
-  package_ref 128198 // OrderManage
+package_ref 128198 // OrderManage
+  classview_ref 141254 // classView
+  classview_ref 128110 // views
 end
 end
