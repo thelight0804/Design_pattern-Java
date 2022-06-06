@@ -1,0 +1,401 @@
+format 224
+"employee" // employee
+  revision 1
+  modified_by 110 "Mina_"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  classview 134638 "views"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    associated_deployment_view deploymentview_ref 134638 // views
+    classdiagram 134638 "diagram"
+      classdiagramsettings member_max_width 0 end
+      size A4-Landscape
+    end
+
+    class 163054 "CommandFactory"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 164334 // <dependency>
+	relation 164334 -_->
+	  stereotype "create"
+	  a public
+	    classrelation_ref 164334 // <dependency>
+	  b parent class_ref 151366 // CommuteCommand
+      end
+
+      operation 175086 "createOnWorkCommand"
+	public return_type class_ref 151366 // CommuteCommand
+	nparams 2
+	  param in name "employeeType" type class_ref 163182 // EmployeeType
+	  param in name "employee" type class_ref 157894 // Employee
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 175214 "createOffWorkCommand"
+	public return_type class_ref 151366 // CommuteCommand
+	nparams 2
+	  param in name "employeeType" type class_ref 163182 // EmployeeType
+	  param in name "employee" type class_ref 157894 // Employee
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+    end
+
+    class 163182 "EmployeeType"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      php_decl "${comment}${visibility}final class ${name} {
+${items}}
+"
+      python_2_2 python_decl "class ${name}:
+${docstring}${members}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 155246 "DINING_EMPLOYEE"
+	public type class_ref 163182 // EmployeeType
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155502 "DELIVERY_EMPLOYEE"
+	public type class_ref 163182 // EmployeeType
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 155630 "KITCHEN_EMPLOYEE"
+	public type class_ref 163182 // EmployeeType
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 164462 // <dependency>
+	relation 164462 -_->
+	  a public
+	    classrelation_ref 164462 // <dependency>
+	  b parent class_ref 163054 // CommandFactory
+      end
+    end
+
+    class 163310 "FullTimeDiningEmployee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 164590 // <generalisation>
+	relation 164590 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 164590 // <generalisation>
+	  b parent class_ref 158406 // DiningEmployee
+      end
+    end
+
+    class 163438 "PartTimeDiningEmployee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 164974 // <generalisation>
+	relation 164974 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 164974 // <generalisation>
+	  b parent class_ref 158406 // DiningEmployee
+      end
+    end
+
+    class 163566 "FullTimeDeliveryEmployee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 164718 // <generalisation>
+	relation 164718 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 164718 // <generalisation>
+	  b parent class_ref 158278 // DeliveryEmployee
+      end
+    end
+
+    class 163694 "FullTimeKitchenEmployee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 164846 // <generalisation>
+	relation 164846 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 164846 // <generalisation>
+	  b parent class_ref 158534 // KitchenEmployee
+      end
+    end
+
+    class 163822 "PartTimeDeliveryEmployee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 165102 // <generalisation>
+	relation 165102 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 165102 // <generalisation>
+	  b parent class_ref 158278 // DeliveryEmployee
+      end
+    end
+
+    class 163950 "PartTimeKitchenEmployee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 165230 // <generalisation>
+	relation 165230 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 165230 // <generalisation>
+	  b parent class_ref 158534 // KitchenEmployee
+      end
+    end
+
+    class 164078 "FullTimeCommandFactory"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 175342 "createOnWorkCommand"
+	public return_type class_ref 151366 // CommuteCommand
+	nparams 2
+	  param in name "employeeType" type class_ref 163182 // EmployeeType
+	  param in name "employee" type class_ref 157894 // Employee
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 175470 "createOffWorkCommand"
+	public return_type class_ref 151366 // CommuteCommand
+	nparams 2
+	  param in name "employeeType" type class_ref 163182 // EmployeeType
+	  param in name "employee" type class_ref 157894 // Employee
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 165486 // <generalisation>
+	relation 165486 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 165486 // <generalisation>
+	  b parent class_ref 163054 // CommandFactory
+      end
+    end
+
+    class 164206 "PartTimeCommandFactory"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 175598 "createOnWorkCommand"
+	public return_type class_ref 151366 // CommuteCommand
+	nparams 2
+	  param in name "employeeType" type class_ref 163182 // EmployeeType
+	  param in name "employee" type class_ref 157894 // Employee
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 175726 "createOffWorkCommand"
+	public return_type class_ref 151366 // CommuteCommand
+	nparams 2
+	  param in name "employeeType" type class_ref 163182 // EmployeeType
+	  param in name "employee" type class_ref 157894 // Employee
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 165614 // <generalisation>
+	relation 165614 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 165614 // <generalisation>
+	  b parent class_ref 163054 // CommandFactory
+      end
+    end
+  end
+
+  deploymentview 134638 "views"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+  end
+end
