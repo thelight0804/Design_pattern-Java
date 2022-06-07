@@ -1,6 +1,6 @@
 format 224
 "commute" // commute
-  revision 4
+  revision 5
   modified_by 110 "Mina_"
   // class settings
   
@@ -750,7 +750,6 @@ ${items}};
 	mysql_decl ""
 	MysqlColumn
       end
-
     end
   end
 
