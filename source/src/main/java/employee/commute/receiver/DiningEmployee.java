@@ -44,7 +44,7 @@ public class DiningEmployee implements CommandReceiver {
         LocalDateTime endTime = LocalDateTime.now();
         workTime = Duration.between(startTime, endTime);
         System.out.println("Work time : " + workTime);
-        System.out.println("Wage : " + (workTime.toMinutes() * HOURLY_WAGE));
+        System.out.println("Wage : " + (workTime.toHours() * HOURLY_WAGE));
         attendanceRepository.createAttendance(Attendance.builder().employee(employee).startTime(startTime)
                 .endTime(endTime).wage(workTime.toHours() * HOURLY_WAGE).build());
     }
