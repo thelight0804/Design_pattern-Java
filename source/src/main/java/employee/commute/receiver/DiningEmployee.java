@@ -2,15 +2,16 @@ package employee.commute.receiver;
 
 import employee.Employee;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.io.BufferedReader;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DiningEmployee implements CommandReceiver {
     private final int HOURLY_WAGE = 9160;
-    private Employee employee;
+    private final Employee employee;
     private Duration workTime;
     private LocalDateTime startTime;
 
@@ -46,7 +47,7 @@ public class DiningEmployee implements CommandReceiver {
     public boolean checkPassword() {
         // Initialize BufferedReader to read password
         BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
-        System.out.println("Please enter password to start timer: ");
+        System.out.println("Please enter password: ");
         try {
             // Check password is equal to password in employee's record
             String password = br.readLine();
