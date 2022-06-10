@@ -1,5 +1,6 @@
 package employee;
 
+import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
 import employee.commute.CommuteManager;
 import repository.EmployeeRepository;
@@ -10,9 +11,22 @@ import java.io.InputStreamReader;
 import java.util.function.Supplier;
 
 public class EmployeeManagement implements Manager {
+    // Use singleton pattern
+    private volatile static EmployeeManagement instance = null;
+    public static EmployeeManagement getInstance() {
+        if (instance == null) {
+            synchronized (EmployeeManagement.class) {
+                if (instance == null) {
+                    instance = new EmployeeManagement();
+                }
+            }
+        }
+        return instance;
+    }
+
     EmployeeRepository employeeRepository = EmployeeRepository.getInstance();
 
-    private void createEmployee() {
+    protected void createEmployee() {
         // Get employee information from console
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         final String name = ((Supplier<String>) () -> {
@@ -58,5 +72,18 @@ public class EmployeeManagement implements Manager {
 
     }
 
-
+    enum EmployeeManagementEndpoint implements EndpointElement {
+        EMPLOYEE_CREATE{
+            @Override public String getName() {
+                return "직원 추가";
+            }
+            @Override public String getDescription() {
+                return "직원을 데이터베이스에 주가합니다.";
+            }
+            @Override public Runnable getRunner() {
+                return EmployeeManagement.getInstance()::createEmployee;
+            }
+        }
+    }
 }
+
