@@ -61,7 +61,7 @@ public class DeliveryEmployee implements CommandReceiver {
     private boolean checkPassword() {
         // Initialize BufferedReader to read password
         BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
-        System.out.println("Please enter password to start timer: ");
+        System.out.println("Please enter password: ");
         try {
             // Check password is equal to password in employee's record
             String password = br.readLine();
@@ -105,6 +105,6 @@ enum DeliveryEmployeeChecklist {
     SPEED_LIMITER_STATUS ("속도 제한기가 정상적으로 작동 중입니까?", true),
     ;
 
-    private String question;
-    private boolean answer;
+    private final String question;
+    private final boolean answer;
 }

@@ -47,7 +47,7 @@ public class KitchenEmployee implements CommandReceiver {
     public boolean checkPassword() {
         // Initialize BufferedReader to read password
         BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
-        System.out.println("Please enter password to start timer: ");
+        System.out.println("Please enter password: ");
         try {
             // Check password is equal to password in employee's record
             String password = br.readLine();
