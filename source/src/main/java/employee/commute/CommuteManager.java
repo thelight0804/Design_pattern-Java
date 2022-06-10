@@ -1,14 +1,18 @@
 package employee.commute;
 
+import conf.interfaces.Manager;
 import employee.Employee;
 import employee.commute.command.CommuteCommand;
 import employee.commute.command.OffWorkCommand;
 import employee.commute.command.OnWorkCommand;
 import employee.commute.receiver.DeliveryEmployee;
 import employee.commute.receiver.KitchenEmployee;
+import employee.exception.NoSpaceForCommandException;
+import repository.EmployeeRepository;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,14 +20,32 @@ import java.util.List;
  * This class works as a Invoker in the Command Pattern.
  * Client should depends this class to manage the Commute.
  */
-public class CommuteManager {
+public class CommuteManager implements Manager {
     private final int MAX_EMPLOYEE = 10;
-    private CommuteCommand[] onWorkCommands = new OnWorkCommand[MAX_EMPLOYEE];
-    private CommuteCommand[] offWorkCommands = new OffWorkCommand[MAX_EMPLOYEE];
+    private final CommuteCommand[] onWorkCommands = new OnWorkCommand[MAX_EMPLOYEE];
+    private final CommuteCommand[] offWorkCommands = new OffWorkCommand[MAX_EMPLOYEE];
+
+    // Use singleton pattern
+    private static CommuteManager instance = new CommuteManager();
+    public static CommuteManager getInstance() {
+        if (instance == null) {
+            instance = new CommuteManager();
+        }
+        return instance;
+    }
 
     public void setCommuteCommand(int index, CommuteCommand onWorkCommand, CommuteCommand offWorkCommand) {
         onWorkCommands[index] = onWorkCommand;
         offWorkCommands[index] = offWorkCommand;
+    }
+
+    public int findEmptyIndex() throws NoSpaceForCommandException {
+        for(int i = 0; i < MAX_EMPLOYEE; i++) {
+            if(onWorkCommands[i] == null && offWorkCommands[i] == null) {
+                return i;
+            }
+        }
+        throw new NoSpaceForCommandException("Not enough space for commands");
     }
 
     public CommuteManager() { }

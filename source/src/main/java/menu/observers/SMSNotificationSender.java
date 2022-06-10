@@ -45,22 +45,23 @@ public class SMSNotificationSender implements Observer {
     @Override
     public void modify(String lastName, int lastPrice, String name, int price) {
         System.out.println("Observer Detected modify signal -------");
+        // Is it changed all?
+        if (!lastName.equals(name) && lastPrice != price) {
+            sendMessageToSubscribedUser(new Object[]{lastName, name, price}, MODIFY_MENU_ALL_MESSAGE_FORMAT);
+        }
         // Is it a name change?
-        if (!lastName.equals(name) && lastPrice == price) {
+        else if (!lastName.equals(name)) {
             sendMessageToSubscribedUser(new Object[]{name, lastName}, MODIFY_MENU_NAME_MESSAGE_FORMAT);
         }
         // Is it a price increase?
         else if (lastPrice < price) {
-            sendMessageToSubscribedUser(new Object[]{name, price}, MODIFY_MENU_PRICE_INCREASE_MESSAGE_FORMAT);
+            sendMessageToSubscribedUser(new Object[]{name, lastPrice, price}, MODIFY_MENU_PRICE_INCREASE_MESSAGE_FORMAT);
         }
         // Is it a price decrease?
         else if (lastPrice > price) {
-            sendMessageToSubscribedUser(new Object[]{name, price}, MODIFY_MENU_PRICE_DECREASE_MESSAGE_FORMAT);
+            sendMessageToSubscribedUser(new Object[]{name, lastPrice, price}, MODIFY_MENU_PRICE_DECREASE_MESSAGE_FORMAT);
         }
-        // Is it changed all?
-        else {
-            sendMessageToSubscribedUser(new Object[]{name, lastName, price}, MODIFY_MENU_ALL_MESSAGE_FORMAT);
-        }
+
         System.out.println("Done sending SMS to subscribers.");
     }
 

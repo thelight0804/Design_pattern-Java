@@ -1,10 +1,12 @@
 package employee.commute.receiver;
 
+import employee.Attendance;
 import employee.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.time.DurationFormatUtils;
+import repository.AttendanceRepository;
 
 import java.io.BufferedReader;
 import java.time.Duration;
@@ -17,6 +19,8 @@ public class DeliveryEmployee implements CommandReceiver {
     private final Employee employee;
     private Duration workTime;
     private LocalDateTime startTime;
+
+    AttendanceRepository attendanceRepository = AttendanceRepository.getInstance();
 
     @Override
     public void onWork() {
@@ -55,13 +59,14 @@ public class DeliveryEmployee implements CommandReceiver {
         System.out.println("Work time : " +
                 DurationFormatUtils.formatDuration(workTime.toMillis(), "HH:mm:ss", true));
         System.out.println("Wage : " + (workTime.toHours() * HOURLY_WAGE));
-        // TODO: You should add logic for save wage to database.
+        attendanceRepository.createAttendance(Attendance.builder().employee(employee).startTime(startTime)
+                .endTime(endTime).wage(workTime.toHours() * HOURLY_WAGE).build());
         startTime = null;
     }
     private boolean checkPassword() {
         // Initialize BufferedReader to read password
         BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
-        System.out.println("Please enter password to start timer: ");
+        System.out.println("Please enter password: ");
         try {
             // Check password is equal to password in employee's record
             String password = br.readLine();
@@ -105,6 +110,6 @@ enum DeliveryEmployeeChecklist {
     SPEED_LIMITER_STATUS ("속도 제한기가 정상적으로 작동 중입니까?", true),
     ;
 
-    private String question;
-    private boolean answer;
+    private final String question;
+    private final boolean answer;
 }
