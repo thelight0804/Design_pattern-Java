@@ -1,8 +1,10 @@
 package employee.commute.receiver;
 
+import employee.Attendance;
 import employee.Employee;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import repository.AttendanceRepository;
 
 import java.io.BufferedReader;
 import java.time.Duration;
@@ -14,6 +16,8 @@ public class KitchenEmployee implements CommandReceiver {
     private final Employee employee;
     private Duration workTime;
     private LocalDateTime startTime;
+
+    AttendanceRepository attendanceRepository = AttendanceRepository.getInstance();
 
     @Override
     public void onWork() {
@@ -40,8 +44,9 @@ public class KitchenEmployee implements CommandReceiver {
         LocalDateTime endTime = LocalDateTime.now();
         workTime = Duration.between(startTime, endTime);
         System.out.println("Work time : " + workTime);
-        System.out.println("Wage : " + (workTime.toMinutes() * HOURLY_WAGE));
-        // TODO: You should add logic for save wage to database.
+        System.out.println("Wage : " + (workTime.toHours() * HOURLY_WAGE));
+        attendanceRepository.createAttendance(Attendance.builder().employee(employee).startTime(startTime)
+                .endTime(endTime).wage(workTime.toHours() * HOURLY_WAGE).build());
     }
 
     public boolean checkPassword() {
