@@ -1,6 +1,6 @@
 package repository;
 
-import sales.Sales;
+import menu.sales.Sales;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package sales.print.printer;
+package menu.sales.print.printer;
 
+import menu.sales.Sales;
 import repository.SalesRepository;
-import sales.Sales;
 
 import java.util.Comparator;
 import java.util.List;

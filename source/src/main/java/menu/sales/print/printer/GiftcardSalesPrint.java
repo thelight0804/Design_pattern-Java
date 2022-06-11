@@ -1,6 +1,6 @@
-package sales.print.printer;
+package menu.sales.print.printer;
 
-import sales.TransactionType;
+import menu.sales.TransactionType;
 
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package sales;
+package menu.sales;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

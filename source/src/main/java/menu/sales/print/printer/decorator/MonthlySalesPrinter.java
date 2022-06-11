@@ -1,6 +1,6 @@
-package sales.print.printer.decorator;
+package menu.sales.print.printer.decorator;
 
-import sales.print.printer.SalesPrint;
+import menu.sales.print.printer.SalesPrint;
 
 public class MonthlySalesPrinter extends PrintDecorator{
 

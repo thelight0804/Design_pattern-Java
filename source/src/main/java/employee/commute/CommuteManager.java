@@ -1,13 +1,17 @@
 package employee.commute;
 
+import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
+import conf.middleware.Console;
 import employee.Employee;
+import employee.EmployeeManagement;
 import employee.commute.command.CommuteCommand;
 import employee.commute.command.OffWorkCommand;
 import employee.commute.command.OnWorkCommand;
 import employee.commute.receiver.DeliveryEmployee;
 import employee.commute.receiver.KitchenEmployee;
 import employee.exception.NoSpaceForCommandException;
+import menu.MenuManagement;
 import repository.EmployeeRepository;
 
 import java.io.BufferedReader;
@@ -50,19 +54,28 @@ public class CommuteManager implements Manager {
 
     public CommuteManager() { }
 
-    public void onWork(int index) {
+    public void onWork() {
         try {
+            int index = Integer.parseInt(Console.getInput("개인 번호를 입력하세요"));
             onWorkCommands[index].execute();
+        }
+        catch (NumberFormatException e) {
+            System.out.println("올바르지 못한 숫자 형식입니다.");
         }
         catch (NullPointerException e) {
             System.out.println("등록되지 않은 직원 개인 번호입니다.");
         }
     }
 
-    public void offWork(int index) {
+    public void offWork() {
         try {
+            int index = Integer.parseInt(Console.getInput("개인 번호를 입력하세요"));
             offWorkCommands[index].execute();
-        } catch (NullPointerException e) {
+        }
+        catch (NumberFormatException e) {
+            System.out.println("올바르지 못한 숫자 형식입니다.");
+        }
+        catch (NullPointerException e) {
             System.out.println("등록되지 않은 직원 개인 번호입니다.");
         }
     }
@@ -78,12 +91,12 @@ public class CommuteManager implements Manager {
                     case 1:
                         System.out.println("출근 등록을 위해 등록할 개인 번호를 입력해주세요.");
                         int index = Integer.parseInt(br.readLine());
-                        onWork(index);
+                        onWork();
                         break;
                     case 2:
                         System.out.println("퇴근 등록을 위해 등록할 개인 번호를 입력해주세요.");
                         index = Integer.parseInt(br.readLine());
-                        offWork(index);
+                        offWork();
                         break;
                     default:
                         System.out.println("잘못 입력하셨습니다.");
@@ -117,5 +130,36 @@ public class CommuteManager implements Manager {
 
         commuteManager.run();
     }
+
+    enum CommuteManagementEndpoint implements EndpointElement {
+        ON_WORK{
+            @Override public String getName() {
+                return "출근";
+            }
+            @Override public String getDescription() {
+                return "출근 시간을 데이터베이스에 주가합니다.";
+            }
+            @Override public Runnable getRunner() {
+                return CommuteManager.getInstance()::onWork;
+            }
+        },
+        OFF_WORK{
+            @Override public String getName() {
+                return "퇴근";
+            }
+            @Override public String getDescription() {
+                return "퇴근 시간을 데이터베이스에 주가합니다.";
+            }
+            @Override public Runnable getRunner() {
+                return CommuteManager.getInstance()::offWork;
+            }
+        }
+
+
+    }
+
+
+
+
 
 }

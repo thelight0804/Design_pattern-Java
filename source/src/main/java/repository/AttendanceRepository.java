@@ -72,6 +72,4 @@ public class AttendanceRepository {
                 .findFirst();
     }
 
-    // TODO: 2022-06-10 wage가 추가 되었으니 repository에서도 employee별 임금 계산??하는 method 필요?
-
 }

@@ -1,6 +1,6 @@
 package menu;
 
-import com.sun.xml.internal.ws.util.UtilException;
+
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
 import menu.interfaces.NotifyElement;
