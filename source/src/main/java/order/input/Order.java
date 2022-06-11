@@ -34,4 +34,5 @@ public abstract class Order {
     String count = "주문 수량 : " + Integer.toString(menuList.size()) + "개";
     return count;
   }
+
 }

@@ -2,83 +2,68 @@ format 224
 
 classcanvas 128110 class_ref 135022 // Observer
   classdiagramsettings member_max_width 0 end
-  xyz 16.06 162.98 2000
+  xyz 25.06 10.58 2000
 end
 classcanvas 128238 class_ref 141550 // MenuManagement
   classdiagramsettings member_max_width 0 end
-  xyz 45.06 351.22 2000
+  xyz 54.46 418.42 2000
 end
 classcanvas 128494 class_ref 141678 // MenuRepository
   classdiagramsettings member_max_width 0 end
-  xyz 222.06 578.62 2000
+  xyz 231.06 677.62 2000
 end
 note 128750 "Database Section
 "
-  xyzwh 125.06 540.72 1995 325 109
+  xyzwh 134.26 640.52 1995 325 109
 classcanvas 128878 class_ref 141806 // AppNotificationSender
   classdiagramsettings member_max_width 0 end
-  xyz 621 237.7 2000
+  xyz 651.8 210.5 2000
 end
 classcanvas 129134 class_ref 141934 // NotifyElement
   classdiagramsettings member_max_width 0 end
-  xyz 8.06 16.5 2000
+  xyz 17.26 187.7 2000
 end
-classcanvas 129390 class_ref 142062 // MenuBoardDisplay
+classcanvas 129390 class_ref 142062 // OutdoorBoardModifierModule
   classdiagramsettings member_max_width 0 end
-  xyz 621 406.92 2000
+  xyz 654 331.92 2000
 end
 classcanvas 129774 class_ref 142190 // SMSNotificationSender
   classdiagramsettings member_max_width 0 end
-  xyz 621 57.96 2006
+  xyz 650.2 36.76 2006
 end
-relationcanvas 128366 relation_ref 135534 // <directional composition>
-  from ref 128238 z 2001 stereotype "<<list>>" xyz 305 308 3000 to ref 128110
-  role_a_pos 297 288 3000 no_role_b
-  multiplicity_a_pos 271 288 3000 no_multiplicity_b
-end
-relationcanvas 128622 relation_ref 135662 // <directional composition>
+relationcanvas 128838 relation_ref 135662 // <directional composition>
   from ref 128238 z 2001 to ref 128494
-  role_a_pos 297 555 3000 no_role_b
+  role_a_pos 301 654 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128966 relation_ref 166726 // <generalisation>
+  from ref 128238 z 2001 to ref 129134
+  no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129006 relation_ref 135790 // <realization>
   decenter_begin 57
-  decenter_end 587
+  decenter_end 757
   from ref 128878 z 2001 to ref 128110
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
-relationcanvas 129262 relation_ref 135918 // <realization>
-  decenter_begin 16
-  decenter_end 704
-  from ref 128878 z 2001 to ref 129134
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
+relationcanvas 129094 relation_ref 166598 // <directional composition>
+  from ref 129134 z 2001 to ref 128110
+  role_a_pos 303 132 3000 no_role_b
+  multiplicity_a_pos 284 132 3000 no_multiplicity_b
 end
 relationcanvas 129518 relation_ref 136046 // <realization>
-  decenter_begin 16
-  decenter_end 758
+  decenter_begin 14
+  decenter_end 963
   from ref 129390 z 2001 to ref 128110
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 129646 relation_ref 136174 // <realization>
-  decenter_begin 16
-  from ref 129390 z 2001 to ref 129134
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129902 relation_ref 136302 // <realization>
   decenter_begin 52
-  decenter_end 981
+  decenter_end 393
   from ref 129774 z 2007 to ref 128110
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 130030 relation_ref 136430 // <realization>
-  decenter_begin 52
-  decenter_end 428
-  from ref 129774 z 2007 to ref 129134
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
