@@ -4,13 +4,22 @@ import conf.enums.UserType;
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
 import conf.middleware.Console;
+import conf.middleware.SessionStorage;
 import employee.commute.CommuteManager;
+import employee.commute.receiver.CommandReceiver;
 import employee.exception.NoSpaceForCommandException;
+import employee.factory.EmployeeCommandFactory;
+import employee.factory.FullTimeCommandFactory;
+import employee.factory.PartTimeCommandFactory;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import repository.AttendanceRepository;
 import repository.EmployeeRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -45,6 +54,34 @@ public class EmployeeManagement implements Manager {
                 .name(name)
                 .password(password)
                 .build();
+        // get which type employee is
+        String workType = Console.getInput("직원의 직급을 선택하세요(정규직/비정규직): ");
+        EmployeeCommandFactory employeeCommandFactory;
+        if (workType == null) {
+            System.out.println("입력이 잘못되었습니다.");
+            return;
+        } else if (workType.equals("정규직")) {
+            employeeCommandFactory = new FullTimeCommandFactory();
+        }else if (workType.equals("비정규직")) {
+            employeeCommandFactory = new PartTimeCommandFactory();
+        } else {
+            System.out.println("입력이 잘못되었습니다.");
+            return;
+        }
+        // create Employee command receiver
+        for (EmployeeType type : EmployeeType.values()){
+            System.out.println(" - " + type.getName());
+        }
+        String employeeType = Console.getInput("직원의 직종을 선택하세요: ");
+        if (employeeType == null) {
+            System.out.println("입력이 잘못되었습니다.");
+            return;
+        }
+        EmployeeType employeeTypeEnum = EmployeeType.getEmployeeType(employeeType);
+        if (employeeTypeEnum == null) {
+            System.out.println("입력이 잘못되었습니다.");
+            return;
+        }
 
         // generate index of command slot for employee commute management
         // find empty slot
@@ -53,6 +90,11 @@ public class EmployeeManagement implements Manager {
             int index = commuteManager.findEmptyIndex();
             System.out.println("로그인을 위한 개인 번호는 " + index + " 입니다. 잊지 않게 주의하세요!");
             employeeRepository.addEmployee(employee);
+            // create employee command receiver
+            CommuteManager.getInstance().setCommuteCommand(index,
+                    employeeCommandFactory.createOnWorkCommand(employeeTypeEnum, employee),
+                    employeeCommandFactory.createOffWorkCommand(employeeTypeEnum, employee)
+            );
 
         } catch (NoSpaceForCommandException e) {
             System.err.println("There is no empty slot for new employee.");
@@ -62,6 +104,11 @@ public class EmployeeManagement implements Manager {
 
     public void RetrieveEmployees() {
         employeeRepository.getEmployees().forEach(System.out::println);
+    }
+
+    public void checkAllEmployeeWage(){
+        long allWage = AttendanceRepository.getInstance().getAllAttendances().stream().mapToLong(i -> i.getWage()).sum();
+        System.out.println("모든 직원의 급여 : " + allWage);
     }
 
     /**
@@ -141,7 +188,30 @@ public class EmployeeManagement implements Manager {
             @Override public Function<UserType, Boolean> requireAuthentication() {
                 return userType -> true;
             }
+        },
+
+        CHECK_EMPLOYEE_WAGE{
+            @Override public Runnable getRunner() {
+                return EmployeeManagement.getInstance()::checkAllEmployeeWage;
+            }
+            @Override public String getName() {
+                return "모든 직원 월급 조회";
+            }
+            @Override public String getDescription() {
+                return "직원 월급 조회를 진행합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return userType -> userType == UserType.ADMIN;
+            }
         }
     }
+
+    public static void main(String[] args) {
+        SessionStorage.getInstance().getStorage().put("user", UserType.ADMIN);
+        EmployeeManagement employeeManagement = EmployeeManagement.getInstance();
+        employeeManagement.run();
+    }
+
+
 }
 
