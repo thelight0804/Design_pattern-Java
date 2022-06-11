@@ -1,7 +1,7 @@
 format 224
 "UpdateMenu" // UpdateMenu
-  revision 9
-  modified_by 60 "¹Ú»óÇö"
+  revision 10
+  modified_by 70 "ddoep"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -52,8 +52,8 @@ format 224
      end
     associated_deployment_view deploymentview_ref 128003 // deployment
     classdiagram 128003 "classDiagram"
-      classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 drawing_language uml end
-      size A4-Landscape
+      classdiagramsettings draw_all_relations no show_members_full_definition yes show_members_visibility yes member_max_width 0 drawing_language uml end
+      size A3-Landscape
     end
 
     class 135022 "Observer"
@@ -126,16 +126,6 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 135534 // Observers (<directional composition>)
-	relation 135534 *-->
-	  stereotype "list"
-	  a role_name "Observers" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 135534 // Observers (<directional composition>)
-	  b parent class_ref 135022 // Observer
-      end
-
       classrelation 135662 // menuRepository (<directional composition>)
 	relation 135662 *-->
 	  a role_name "menuRepository" private
@@ -213,6 +203,15 @@ ${members}}
 	
 	
       end
+
+      classrelation 167238 // <generalisation>
+	relation 166726 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 167238 // <generalisation>
+	  b parent class_ref 141934 // NotifyElement
+      end
+
     end
 
     class 141678 "MenuRepository"
@@ -247,14 +246,6 @@ ${members}}
 	    java "${type}"
 	    classrelation_ref 135790 // <realization>
 	  b parent class_ref 135022 // Observer
-      end
-
-      classrelation 135918 // <realization>
-	relation 135918 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 135918 // <realization>
-	  b parent class_ref 141934 // NotifyElement
       end
 
       operation 143982 "create"
@@ -298,42 +289,15 @@ ${members}}
 	
       end
 
-      operation 144366 "onCreate"
-	public explicit_return_type "void"
-	nparams 2
-	  param in name "name" explicit_type "String"
-	  param in name "price" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 144494 "onModify"
+      operation 175046 "sendRequest"
 	public explicit_return_type "void"
 	nparams 4
-	  param in name "name" explicit_type "string"
-	  param in name "price" explicit_type "int"
-	  param in name "lastName" explicit_type "string"
-	  param in name "lastPrice" explicit_type "int"
+	  param in name "String" explicit_type "url"
+	  param in name "String" explicit_type "method"
+	  param in name "String" explicit_type "bodyFormat"
+	  param in name "Object[]" explicit_type "args"
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 144622 "onDelete"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "name" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -343,21 +307,59 @@ ${members}}
     end
 
     class 141934 "NotifyElement"
-      visibility public stereotype "interface"
+      abstract visibility public 
       cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
 ${members}}
 "
-      php_decl "${comment}interface ${name}${extends} {
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
 ${members}}
 "
       python_2_2 python_decl ""
-      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+      idl_decl "${comment}${abstract}${custom}valuetype ${name}${inherit} {
 ${members}};
 "
       explicit_switch_type ""
       mysql_decl ""
       
+      attribute 164806 "observers"
+	private explicit_type "List<Observer>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 174406 "addObserver"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "observer" type class_ref 135022 // Observer
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 174534 "removeObserver"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "observer" type class_ref 135022 // Observer
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
       operation 143598 "onCreate"
 	public explicit_return_type "void"
 	nparams 2
@@ -400,9 +402,30 @@ ${members}};
 	
 	
       end
+
+      operation 174278 "NotifyElement"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 167110 // observer (<directional composition>)
+	relation 166598 *-->
+	  a role_name "observer" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 167110 // observer (<directional composition>)
+	  b parent class_ref 135022 // Observer
+      end
     end
 
-    class 142062 "MenuBoardDisplay"
+    class 142062 "OutdoorBoardModifierModule"
       visibility public 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
@@ -420,14 +443,6 @@ ${members}}
 	    java "${type}"
 	    classrelation_ref 136046 // <realization>
 	  b parent class_ref 135022 // Observer
-      end
-
-      classrelation 136174 // <realization>
-	relation 136174 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 136174 // <realization>
-	  b parent class_ref 141934 // NotifyElement
       end
 
       operation 144750 "create"
@@ -471,47 +486,17 @@ ${members}}
 	
       end
 
-      operation 145134 "onCreate"
-	public explicit_return_type "void"
-	nparams 2
-	  param in name "name" explicit_type "String"
-	  param in name "price" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
-  ${body}}
+      attribute 165062 "boardText"
+	private explicit_type "string"
+	init_value "\"\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	
-	
-	
-      end
-
-      operation 145262 "onModify"
-	public explicit_return_type "void"
-	nparams 4
-	  param in name "name" explicit_type "string"
-	  param in name "price" explicit_type "int"
-	  param in name "lastName" explicit_type "string"
-	  param in name "lastPrice" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 145390 "onDelete"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "name" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
       end
     end
 
@@ -535,12 +520,30 @@ ${members}}
 	  b parent class_ref 135022 // Observer
       end
 
-      classrelation 136430 // <realization>
-	relation 136430 -_-|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 136430 // <realization>
-	  b parent class_ref 141934 // NotifyElement
+      operation 174662 "subscribe"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "phoneNumber" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 174790 "unsubscribe"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "phoneNumber" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
 
       operation 145518 "create"
@@ -584,49 +587,6 @@ ${members}}
 	
       end
 
-      operation 145902 "onCreate"
-	public explicit_return_type "void"
-	nparams 2
-	  param in name "name" explicit_type "String"
-	  param in name "price" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 146030 "onModify"
-	public explicit_return_type "void"
-	nparams 4
-	  param in name "name" explicit_type "string"
-	  param in name "price" explicit_type "int"
-	  param in name "lastName" explicit_type "string"
-	  param in name "lastPrice" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 146158 "onDelete"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "name" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
       attribute 134766 "SubscribedPhoneNumberLIst"
 	private explicit_type "List<String>"
 	cpp_decl ""
@@ -637,6 +597,20 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      operation 174918 "sendMessageToSubscribedUser"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "Object[]" explicit_type "messageElement"
+	  param in name "String" explicit_type "messageFormat"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
   end
