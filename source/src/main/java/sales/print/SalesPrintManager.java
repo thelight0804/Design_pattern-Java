@@ -1,14 +1,14 @@
-package menu.sales.print;
+package sales.print;
 
 import conf.interfaces.Manager;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import menu.sales.print.printer.CardSalesPrint;
+import sales.print.printer.CardSalesPrint;
 import repository.SalesRepository;
-import menu.sales.print.printer.GiftcardSalesPrint;
-import menu.sales.print.printer.SalesPrint;
-import menu.sales.print.printer.decorator.MonthlySalesPrinter;
-import menu.sales.print.printer.decorator.YearlySalesPrinter;
+import sales.print.printer.GiftcardSalesPrint;
+import sales.print.printer.SalesPrint;
+import sales.print.printer.decorator.MonthlySalesPrinter;
+import sales.print.printer.decorator.YearlySalesPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
