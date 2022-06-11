@@ -18,6 +18,9 @@ public class EmployeeRepository {
     public static EmployeeRepository getInstance() {
         if (instance == null) {
             instance = new EmployeeRepository();
+            instance.addEmployee(Employee.builder()
+                    .name("sajang")
+                    .password("password").build());
         }
         return instance;
     }

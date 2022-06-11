@@ -1,5 +1,6 @@
 package employee.commute;
 
+import conf.enums.UserType;
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
 import conf.middleware.Console;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * This class works as a Invoker in the Command Pattern.
@@ -146,6 +148,12 @@ public class CommuteManager implements Manager {
             @Override public String getDescription() {
                 return "출근 시간을 데이터베이스에 주가합니다.";
             }
+
+            @Override
+            public Function<UserType, Boolean> requireAuthentication() {
+                return (userType -> true);
+            }
+
             @Override public Runnable getRunner() {
                 return CommuteManager.getInstance()::onWork;
             }
@@ -157,6 +165,12 @@ public class CommuteManager implements Manager {
             @Override public String getDescription() {
                 return "퇴근 시간을 데이터베이스에 주가합니다.";
             }
+
+            @Override
+            public Function<UserType, Boolean> requireAuthentication() {
+                return (userType -> true);
+            }
+
             @Override public Runnable getRunner() {
                 return CommuteManager.getInstance()::offWork;
             }
