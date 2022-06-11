@@ -7,6 +7,7 @@ import menu.Menu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class AttendanceRepository {
 
@@ -55,10 +56,10 @@ public class AttendanceRepository {
      * @param employee The employee to search.
      * @return The attendance  with the given employee.
      */
-    public Optional<Attendance> getAttendanceByEmployee(Employee employee) {
+    public List<Attendance> getAttendanceByEmployee(Employee employee) {
         return attendances.stream()
                 .filter(attendance -> attendance.getEmployee().equals(employee))
-                .findFirst();
+                .collect(Collectors.toList());
     }
 
     /**
