@@ -2,7 +2,9 @@ package menu.observers;
 
 import menu.interfaces.Observer;
 
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,10 +19,27 @@ public class SMSNotificationSender implements Observer {
 
     public SMSNotificationSender() {
         subscribedPhoneNumberList = new LinkedList<String>();
+        // TODO: need setting code for GUI if need
+        System.out.println("SMS 수신 번호를 입력하세요(-1을 눌러 종료합니다.): ");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            while (true) {
+                System.out.print(" - ");
+                String phone_number = reader.readLine();
+                if (phone_number.equals("-1")) {
+                    break;
+                } else {
+                    subscribedPhoneNumberList.add(phone_number);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("입력 중 문제가 발생했습니다.");
+        }
     }
 
     /**
      * 문자 구독 서비스에 사용자를 추가하는 메소드.
+     *
      * @param phoneNumber 추가할 사용자의 휴대폰 번호
      */
     public void subscribe(String phoneNumber) {
@@ -29,6 +48,7 @@ public class SMSNotificationSender implements Observer {
 
     /**
      * 문자 구독 서비스에서 사용자를 해지하는 메소드.
+     *
      * @param phoneNumber 해지할 사용자의 휴대폰 번호
      */
     public void unsubscribe(String phoneNumber) {

@@ -4,6 +4,7 @@ import menu.interfaces.Observer;
 
 /**
  * This class manages the outdoor board display.
+ *
  * @author Mina_
  * @version 1.0
  * @see menu.interfaces.Observer
