@@ -39,6 +39,11 @@ public class CommuteManager implements Manager {
         offWorkCommands[index] = offWorkCommand;
     }
 
+    /**
+     * This method search for empty slot in the command slot.
+     * @return index of empty slot.
+     * @throws NoSpaceForCommandException if there is no empty slot.
+     */
     public int findEmptyIndex() throws NoSpaceForCommandException {
         for(int i = 0; i < MAX_EMPLOYEE; i++) {
             if(onWorkCommands[i] == null && offWorkCommands[i] == null) {
@@ -47,6 +52,8 @@ public class CommuteManager implements Manager {
         }
         throw new NoSpaceForCommandException("Not enough space for commands");
     }
+
+    // TODO: need to make function for delete employee
 
     public CommuteManager() { }
 
