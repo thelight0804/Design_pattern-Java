@@ -127,6 +127,20 @@ public class EmployeeManagement implements Manager {
             @Override public Function<UserType, Boolean> requireAuthentication() {
                 return userType -> userType == UserType.ADMIN;
             }
+        },
+        COMMUTE_MANAGEMENT{
+            @Override public Runnable getRunner() {
+                return CommuteManager.getInstance()::run;
+            }
+            @Override public String getName() {
+                return "출퇴근 관리";
+            }
+            @Override public String getDescription() {
+                return "출퇴근 관리를 진행합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return userType -> true;
+            }
         }
     }
 }
