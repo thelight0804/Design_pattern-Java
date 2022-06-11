@@ -7,6 +7,6 @@ public class Call implements OrderType {
     public void takeOrder(ServeType serveType) {
         String order = "전화";
         String serve = serveType.serving();
-        System.out.println("[" + order + serve + " 주문]");
+        System.out.println("[" + order + " 주문]");
     }
 }

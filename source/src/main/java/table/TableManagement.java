@@ -6,7 +6,11 @@ import conf.interfaces.Manager;
 import conf.middleware.Console;
 import conf.middleware.SessionStorage;
 import employee.Employee;
+import menu.Menu;
+import order.input.Dining;
 import order.input.Order;
+import order.input.VisitOrder;
+import repository.MenuRepository;
 import repository.OrderRepository;
 import repository.TableOrderRepository;
 import repository.TableRepository;
@@ -36,13 +40,18 @@ public class TableManagement implements Manager {
         List<Table> tables = tableRepository.getTables();
         tables.forEach(table -> {
             System.out.println("테이블: " + table.getTableNum() + "[" + table.getTableCapacity() + "] : " + table.getTableStatus());
+            TableOrderRepository tableOrderRepository = TableOrderRepository.getInstance();
+            Order tableOrder = tableOrderRepository.getOrder(table);
+            if (tableOrder != null) {
+                System.out.println(" 주문: " + tableOrder.getOrderSheet());
+            }
         });
     }
 
     public void createTable() {
         // get table number and capacity
         String tableNum = Console.getInput("테이블 번호를 입력하세요: ");
-        int tableCapacity = Integer.parseInt(Console.getInput("테이블 수량을 입력하세요: "));
+        int tableCapacity = Integer.parseInt(Console.getInput("테이블 인원을 입력하세요: "));
 
         // create table
         tableRepository.createTable(Table.builder()
@@ -87,6 +96,8 @@ public class TableManagement implements Manager {
     }
 
     public static void main(String[] args) {
+        MenuRepository.getInstance().createMenu(Menu.builder().name("짜장면").price(6000).build());
+        MenuRepository.getInstance().createMenu(Menu.builder().name("탕수육").price(13000).build());
         SessionStorage.getInstance().getStorage().put("user", UserType.ADMIN);
         TableManagement.getInstance().run();
     }
@@ -109,7 +120,7 @@ public class TableManagement implements Manager {
         },
         ASSIGN_ORDER_TO_TABLE {
             @Override public Runnable getRunner() {
-                return null;
+                return TableManagement.getInstance()::assignOrder;
             }
             @Override public String getName() {
                 return "주문 전달";
@@ -123,7 +134,7 @@ public class TableManagement implements Manager {
         },
         CREATE_TABLE {
             @Override public Runnable getRunner() {
-                return null;
+                return TableManagement.getInstance()::createTable;
             }
             @Override public String getName() {
                 return "테이블 생성";

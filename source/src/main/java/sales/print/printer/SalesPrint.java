@@ -1,5 +1,6 @@
 package sales.print.printer;
 
+import lombok.Getter;
 import sales.Sales;
 import repository.SalesRepository;
 
@@ -30,5 +31,9 @@ public class SalesPrint {
      */
     public String print() {
         return "--매출 출력 종료--";
+    }
+
+    public List<Sales> getSales() {
+        return sales;
     }
 }

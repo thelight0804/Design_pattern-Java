@@ -17,4 +17,13 @@ public enum TransactionType {
     ;
 
     private final String type;
+
+    public static TransactionType getTransactionType(String type) {
+        for (TransactionType transactionType : TransactionType.values()) {
+            if (transactionType.getType().equals(type)) {
+                return transactionType;
+            }
+        }
+        return null;
+    }
 }

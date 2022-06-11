@@ -5,6 +5,6 @@ package order.input;
  */
 public class Dining implements ServeType{
     public String serving(){
-        return "(홀)";
+        return "(서빙을 시작합니다.)";
     }
 }

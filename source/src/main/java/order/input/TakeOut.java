@@ -5,6 +5,6 @@ package order.input;
  */
 public class TakeOut implements ServeType{
     public String serving(){
-        return "(포장)";
+        return "(포장합니다.)";
     }
 }

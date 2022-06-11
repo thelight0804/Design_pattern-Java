@@ -15,4 +15,12 @@ public class Attendance {
     private LocalDateTime endTime;
     private Long wage;
 
+    @Override
+    public String toString() {
+        return "" +
+                "employee=" + employee +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", wage=" + wage;
+    }
 }
