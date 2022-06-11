@@ -4,6 +4,7 @@ import menu.interfaces.Observer;
 
 /**
  * This class is used to send notifications to api server.
+ *
  * @author Mina_
  * @version 1.0
  * @see Observer

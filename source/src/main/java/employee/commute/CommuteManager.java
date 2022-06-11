@@ -1,13 +1,19 @@
 package employee.commute;
 
+import conf.enums.UserType;
+import conf.interfaces.Element;
+import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
+import conf.middleware.Console;
 import employee.Employee;
+import employee.EmployeeManagement;
 import employee.commute.command.CommuteCommand;
 import employee.commute.command.OffWorkCommand;
 import employee.commute.command.OnWorkCommand;
 import employee.commute.receiver.DeliveryEmployee;
 import employee.commute.receiver.KitchenEmployee;
 import employee.exception.NoSpaceForCommandException;
+import menu.MenuManagement;
 import repository.EmployeeRepository;
 
 import java.io.BufferedReader;
@@ -15,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * This class works as a Invoker in the Command Pattern.
@@ -39,6 +46,11 @@ public class CommuteManager implements Manager {
         offWorkCommands[index] = offWorkCommand;
     }
 
+    /**
+     * This method search for empty slot in the command slot.
+     * @return index of empty slot.
+     * @throws NoSpaceForCommandException if there is no empty slot.
+     */
     public int findEmptyIndex() throws NoSpaceForCommandException {
         for(int i = 0; i < MAX_EMPLOYEE; i++) {
             if(onWorkCommands[i] == null && offWorkCommands[i] == null) {
@@ -48,53 +60,39 @@ public class CommuteManager implements Manager {
         throw new NoSpaceForCommandException("Not enough space for commands");
     }
 
+    // TODO: need to make function for delete employee
+
     public CommuteManager() { }
 
-    public void onWork(int index) {
+    public void onWork() {
         try {
+            int index = Integer.parseInt(Console.getInput("개인 번호를 입력하세요"));
             onWorkCommands[index].execute();
+        }
+        catch (NumberFormatException e) {
+            System.out.println("올바르지 못한 숫자 형식입니다.");
         }
         catch (NullPointerException e) {
             System.out.println("등록되지 않은 직원 개인 번호입니다.");
         }
     }
 
-    public void offWork(int index) {
+    public void offWork() {
         try {
+            int index = Integer.parseInt(Console.getInput("개인 번호를 입력하세요"));
             offWorkCommands[index].execute();
-        } catch (NullPointerException e) {
+        }
+        catch (NumberFormatException e) {
+            System.out.println("올바르지 못한 숫자 형식입니다.");
+        }
+        catch (NullPointerException e) {
             System.out.println("등록되지 않은 직원 개인 번호입니다.");
         }
     }
 
     public void run() {
-        BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
-        for (; ; ) {
-            System.out.println("등록할 때 부여된 개인 번호를 통해 출근/퇴근 확인을 해주시기 바랍니다.");
-            System.out.println("1. 출근 등록");
-            System.out.println("2. 퇴근 등록");
-            try {
-                switch (Integer.parseInt(br.readLine())) {
-                    case 1:
-                        System.out.println("출근 등록을 위해 등록할 개인 번호를 입력해주세요.");
-                        int index = Integer.parseInt(br.readLine());
-                        onWork(index);
-                        break;
-                    case 2:
-                        System.out.println("퇴근 등록을 위해 등록할 개인 번호를 입력해주세요.");
-                        index = Integer.parseInt(br.readLine());
-                        offWork(index);
-                        break;
-                    default:
-                        System.out.println("잘못 입력하셨습니다.");
-                        return;
-                }
-            } catch (NumberFormatException e) { // NumberFormatException if input is not integer
-                System.out.println("잘못된 입력입니다.");
-            } catch (Exception e) {
-                System.out.println("에러가 발생했습니다.");
-            }
-        }
+        System.out.println("등록할 때 부여된 개인 번호를 통해 출근/퇴근 확인을 해주시기 바랍니다.");
+        Manager.invokeMenu(CommuteManagementEndpoint.values());
     }
 
     public static void main(String[] args) {
@@ -117,5 +115,42 @@ public class CommuteManager implements Manager {
 
         commuteManager.run();
     }
+
+    private enum CommuteManagementEndpoint implements EndpointElement {
+        ON_WORK{
+            @Override public String getName() {
+                return "출근";
+            }
+            @Override public String getDescription() {
+                return "출근 시간을 데이터베이스에 주가합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return (userType -> true);
+            }
+            @Override public Runnable getRunner() {
+                return CommuteManager.getInstance()::onWork;
+            }
+        },
+        OFF_WORK{
+            @Override public String getName() {
+                return "퇴근";
+            }
+            @Override public String getDescription() {
+                return "퇴근 시간을 데이터베이스에 주가합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return (userType -> true);
+            }
+            @Override public Runnable getRunner() {
+                return CommuteManager.getInstance()::offWork;
+            }
+        }
+
+
+    }
+
+
+
+
 
 }

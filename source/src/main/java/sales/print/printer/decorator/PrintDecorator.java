@@ -4,7 +4,7 @@ import sales.print.printer.SalesPrint;
 
 /**
  * This class can decorate a SalesPrint object.
- * @see sales.print.printer.SalesPrint
+ * @see SalesPrint
  */
 public abstract class PrintDecorator extends SalesPrint {
     /**
@@ -13,7 +13,7 @@ public abstract class PrintDecorator extends SalesPrint {
     protected SalesPrint parentPrinter;
 
     /**
-     * @see sales.print.printer.SalesPrint#print()
+     * @see SalesPrint#print()
      */
     public abstract String print();
 }

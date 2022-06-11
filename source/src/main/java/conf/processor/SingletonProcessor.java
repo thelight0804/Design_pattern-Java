@@ -13,9 +13,10 @@ import java.util.Set;
 /**
  * This class is used to generate the Singleton class.
  * creates getInstance() method in the @Singleton annotated class.
- * @see Singleton
- * @version 1.0
+ *
  * @author Mina_
+ * @version 1.0
+ * @see Singleton
  */
 @SupportedAnnotationTypes("conf.annotation.Singleton")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
