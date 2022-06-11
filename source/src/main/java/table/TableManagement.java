@@ -3,9 +3,14 @@ package table;
 import conf.enums.UserType;
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
+import conf.middleware.Console;
 import conf.middleware.SessionStorage;
 import employee.Employee;
+import order.input.Order;
+import repository.OrderRepository;
+import repository.TableOrderRepository;
 import repository.TableRepository;
+import repository.exception.EntityNotFoundException;
 
 import java.util.List;
 import java.util.function.Function;
@@ -34,6 +39,45 @@ public class TableManagement implements Manager {
         });
     }
 
+    public void createTable() {
+        // get table number and capacity
+        String tableNum = Console.getInput("테이블 번호를 입력하세요: ");
+        int tableCapacity = Integer.parseInt(Console.getInput("테이블 수량을 입력하세요: "));
+
+        // create table
+        tableRepository.createTable(Table.builder()
+                .tableNum(tableNum)
+                .tableCapacity(tableCapacity)
+                .tableStatus(0)
+                .build());
+
+        System.out.println("테이블이 생성되었습니다.");
+    }
+
+    public void assignOrder() {
+        // get table number
+        String tableNum = Console.getInput("테이블 번호를 입력하세요: ");
+        Table table;
+        try {
+            table = tableRepository.searchTableByNumber(tableNum).orElseThrow(EntityNotFoundException::new);
+        } catch (EntityNotFoundException e) {
+            System.out.println("존재하지 않는 테이블입니다.");
+            return;
+        }
+        // get order number
+        int orderId = Integer.parseInt(Console.getInput("주문 번호를 입력하세요: "));
+        // get order from orderRepository
+        Order order = OrderRepository.getInstance().getOrder(orderId);
+        if (order == null){
+            System.out.println("존재하지 않는 주문입니다.");
+            return;
+        }
+
+        // assign order to table
+        TableOrderRepository.getInstance().addOrder(table, order);
+        System.out.println("주문이 테이블에 배정되었습니다.");
+        table.setTableStatus(1);
+    }
 
     @Override
     public void run() {
