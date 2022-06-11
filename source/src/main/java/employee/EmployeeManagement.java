@@ -6,11 +6,13 @@ import conf.interfaces.Manager;
 import conf.middleware.Console;
 import employee.commute.CommuteManager;
 import employee.exception.NoSpaceForCommandException;
+import repository.AttendanceRepository;
 import repository.EmployeeRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -62,6 +64,11 @@ public class EmployeeManagement implements Manager {
 
     public void RetrieveEmployees() {
         employeeRepository.getEmployees().forEach(System.out::println);
+    }
+
+    public void checkAllEmployeeWage(){
+        long allWage = AttendanceRepository.getInstance().getAllAttendances().stream().mapToLong(i -> i.getWage()).sum();
+        System.out.println("모든 직원의 급여 : " + allWage);
     }
 
     /**
@@ -141,7 +148,24 @@ public class EmployeeManagement implements Manager {
             @Override public Function<UserType, Boolean> requireAuthentication() {
                 return userType -> true;
             }
+        },
+
+        CHECK_EMPLOYEE_WAGE{
+            @Override public Runnable getRunner() {
+                return EmployeeManagement.getInstance()::checkAllEmployeeWage;
+            }
+            @Override public String getName() {
+                return "모든 직원 월급 조회";
+            }
+            @Override public String getDescription() {
+                return "직원 월급 조회를 진행합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return userType -> userType == UserType.ADMIN;
+            }
         }
+
+
     }
 }
 
