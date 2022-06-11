@@ -3,6 +3,7 @@ package menu;
 import conf.enums.UserType;
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
+import conf.middleware.SessionStorage;
 import employee.Employee;
 import menu.interfaces.NotifyElement;
 import menu.observers.AppNotificationSender;
@@ -95,6 +96,10 @@ public class MenuManagement extends NotifyElement implements Manager {
         }
     }
 
+    public void getMenuList() {
+        this.menuRepository.getAllMenuItems().forEach(menu -> System.out.println("이름: " + menu.getName() + ", 가격: " + menu.getPrice()));
+    }
+
     @Override
     public void run() {
         while (true) {
@@ -118,6 +123,7 @@ public class MenuManagement extends NotifyElement implements Manager {
         menuManagement.addObserver("APP", appNotificationSender);
         menuManagement.addObserver("OutdoorBoard", outdoorBoardModifierModule);
         // Run service
+        SessionStorage.getInstance().getStorage().put("user", UserType.ADMIN);
         menuManagement.run();
     }
 
@@ -166,6 +172,20 @@ public class MenuManagement extends NotifyElement implements Manager {
             }
             @Override public Runnable getRunner() {
                 return MenuManagement.getInstance()::deleteMenu;
+            }
+        },
+        GET_MENU_LIST {
+            @Override public String getName() {
+                return "메뉴 목록 조회";
+            }
+            @Override public String getDescription() {
+                return "메뉴 목록을 조회합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return userType -> userType == UserType.ADMIN;
+            }
+            @Override public Runnable getRunner() {
+                return MenuManagement.getInstance()::getMenuList;
             }
         },
     }

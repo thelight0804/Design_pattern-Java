@@ -9,9 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 import menu.MenuManagement;
+import order.input.OrderManager;
 import repository.EmployeeRepository;
 import sales.SalesManagement;
 import setting.SettingManager;
+import table.TableManagement;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -104,7 +106,7 @@ public class ApplicationRunner implements Manager {
                 return (user) -> true;
             }
             @Override public Supplier<Manager> getManagerSupplier() {
-                return null;
+                return OrderManager::getInstance;
             }
         },
         SALES_MANAGEMENT{
@@ -119,6 +121,20 @@ public class ApplicationRunner implements Manager {
             }
             @Override public Supplier<Manager> getManagerSupplier() {
                 return SalesManagement::getInstance;
+            }
+        },
+        TABLE_MANAGEMENT{
+            @Override public String getName() {
+                return "테이블 관리";
+            }
+            @Override public String getDescription() {
+                return "테이블 관리를 할 수 있습니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return (user) -> true;
+            }
+            @Override public Supplier<Manager> getManagerSupplier() {
+                return TableManagement::getInstance;
             }
         },
         SETTING {

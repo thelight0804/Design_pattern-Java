@@ -23,6 +23,10 @@ public abstract class Order {
         orderType.takeOrder(serveType);
     }
 
+    public void finishOrder() {
+        System.out.println(serveType.serving());
+    }
+
     public void setServeType(ServeType st) {
         serveType = st;
     }

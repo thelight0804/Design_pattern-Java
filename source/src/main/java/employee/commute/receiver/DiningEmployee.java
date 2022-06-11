@@ -45,8 +45,11 @@ public class DiningEmployee implements CommandReceiver {
         workTime = Duration.between(startTime, endTime);
         System.out.println("Work time : " + workTime);
         System.out.println("Wage : " + (workTime.toHours() * HOURLY_WAGE));
-        attendanceRepository.createAttendance(Attendance.builder().employee(employee).startTime(startTime)
-                .endTime(endTime).wage(workTime.toHours() * HOURLY_WAGE).build());
+        attendanceRepository.createAttendance(Attendance.builder()
+                .employee(employee)
+                .startTime(startTime)
+                .endTime(endTime)
+                .wage(workTime.toHours() * HOURLY_WAGE).build());
     }
 
     public boolean checkPassword() {

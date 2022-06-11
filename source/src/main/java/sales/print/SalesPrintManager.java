@@ -1,8 +1,11 @@
 package sales.print;
 
 import conf.interfaces.Manager;
+import conf.middleware.Console;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import sales.Sales;
+import sales.TransactionType;
 import sales.print.printer.CardSalesPrint;
 import repository.SalesRepository;
 import sales.print.printer.GiftcardSalesPrint;
@@ -13,6 +16,10 @@ import sales.print.printer.decorator.YearlySalesPrinter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -61,11 +68,26 @@ public class SalesPrintManager implements Manager {
                                 .get());
                 System.out.println(print.print());
             }
-            SalesPrintType type = SalesPrintType.values()[option - 1];
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void insertSales() {
+        DateTimeFormatter df = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyy-MM-dd HH:mm:ss")
+                .toFormatter(Locale.KOREA);
+        Long transaction = Long.parseLong(Console.getInput("금액 : "));
+        LocalDateTime date = LocalDateTime.parse(Console.getInput("날짜 : "), df);
+        TransactionType type = TransactionType.getTransactionType(Console.getInput("거래종류 : "));
+
+        Sales sales = Sales.builder()
+                        .transaction(transaction)
+                        .timestamp(date)
+                        .type(type).build();
+        SalesRepository.getInstance().addSales(sales);
     }
 
     @Override
@@ -84,6 +106,7 @@ public class SalesPrintManager implements Manager {
                         printSales();
                         break;
                     case 2:
+                        insertSales();
                         break;
                     case 3:
                         return;
@@ -98,6 +121,47 @@ public class SalesPrintManager implements Manager {
     }
 
     public static void main(String[] args) {
+        DateTimeFormatter df = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("yyyy-MM-dd HH:mm:ss")
+                .toFormatter(Locale.KOREA);
+        SalesRepository salesRepository = SalesRepository.getInstance();
+        salesRepository.addSales(Sales.builder()
+                .transaction(15000L)
+                .timestamp(LocalDateTime.parse("2020-01-01 01:05:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(12000L)
+                .timestamp(LocalDateTime.parse("2020-01-03 01:50:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(30000L)
+                .timestamp(LocalDateTime.parse("2020-03-01 01:00:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(20000L)
+                .timestamp(LocalDateTime.parse("2020-05-01 01:00:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(157000L)
+                .timestamp(LocalDateTime.parse("2020-05-01 01:00:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(162000L)
+                .timestamp(LocalDateTime.parse("2020-06-01 01:00:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(15000L)
+                .timestamp(LocalDateTime.parse("2020-07-01 01:00:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(27500L)
+                .timestamp(LocalDateTime.parse("2021-09-01 01:00:00", df))
+                .type(TransactionType.CARD_PAYMENT).build());
+        salesRepository.addSales(Sales.builder()
+                .transaction(275300L)
+                .timestamp(LocalDateTime.parse("2021-02-01 01:00:00", df))
+                .type(TransactionType.GIFTCARD_PAYMENT).build());
         new SalesPrintManager().run();
     }
 }

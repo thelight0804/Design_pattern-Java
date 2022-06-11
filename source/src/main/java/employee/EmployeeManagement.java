@@ -6,7 +6,11 @@ import conf.interfaces.Manager;
 import conf.middleware.Console;
 import conf.middleware.SessionStorage;
 import employee.commute.CommuteManager;
+import employee.commute.command.OffWorkCommand;
+import employee.commute.command.OnWorkCommand;
 import employee.commute.receiver.CommandReceiver;
+import employee.commute.receiver.DeliveryEmployee;
+import employee.commute.receiver.KitchenEmployee;
 import employee.exception.NoSpaceForCommandException;
 import employee.factory.EmployeeCommandFactory;
 import employee.factory.FullTimeCommandFactory;
@@ -207,6 +211,29 @@ public class EmployeeManagement implements Manager {
     }
 
     public static void main(String[] args) {
+        CommuteManager commuteManager = CommuteManager.getInstance();
+        Employee employee1 = new Employee("정우성", "password");
+        DeliveryEmployee employeeCommand1 = new DeliveryEmployee(employee1);
+        commuteManager.setCommuteCommand(0,
+                new OnWorkCommand(employeeCommand1),
+                new OffWorkCommand(employeeCommand1));
+        // 이순신, password 배달 직원 등록
+        Employee employee2 = new Employee("이순신", "password");
+        DeliveryEmployee employeeCommand2 = new DeliveryEmployee(employee2);
+        commuteManager.setCommuteCommand(1,
+                new OnWorkCommand(employeeCommand2),
+                new OffWorkCommand(employeeCommand2));
+        // 박봉팔, passwd 주방 직원 등록
+        Employee employee3 = new Employee("박봉팔", "password");
+        KitchenEmployee employeeCommand3 = new KitchenEmployee(employee3);
+        commuteManager.setCommuteCommand(2,
+                new OnWorkCommand(employeeCommand3),
+                new OffWorkCommand(employeeCommand3));
+
+        EmployeeRepository.getInstance().addEmployee(employee1);
+        EmployeeRepository.getInstance().addEmployee(employee2);
+        EmployeeRepository.getInstance().addEmployee(employee3);
+
         SessionStorage.getInstance().getStorage().put("user", UserType.ADMIN);
         EmployeeManagement employeeManagement = EmployeeManagement.getInstance();
         employeeManagement.run();

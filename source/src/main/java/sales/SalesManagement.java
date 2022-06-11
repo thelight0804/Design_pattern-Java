@@ -49,8 +49,6 @@ public class SalesManagement implements Manager {
                 return SalesManagement.getInstance()::checkCash;
             }
         }
-
-
     }
 
 }

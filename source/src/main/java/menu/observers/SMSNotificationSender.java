@@ -71,7 +71,7 @@ public class SMSNotificationSender implements Observer {
         }
         // Is it a name change?
         else if (!lastName.equals(name)) {
-            sendMessageToSubscribedUser(new Object[]{name, lastName}, MODIFY_MENU_NAME_MESSAGE_FORMAT);
+            sendMessageToSubscribedUser(new Object[]{lastName, name}, MODIFY_MENU_NAME_MESSAGE_FORMAT);
         }
         // Is it a price increase?
         else if (lastPrice < price) {

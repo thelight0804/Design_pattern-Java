@@ -5,6 +5,6 @@ package order.input;
  */
 public class Delivery implements ServeType{
     public String serving(){
-        return "(배달)";
+        return "(조리 완료 알람을 보냅니다.)";
     }
 }

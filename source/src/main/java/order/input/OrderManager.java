@@ -43,7 +43,7 @@ public class OrderManager implements Manager {
         // loop while user types -1 as menu name
         List<Menu> menus = new ArrayList<>();
         while (true) {
-            String menuName = Console.getInput("메뉴를 입력하세요: ");
+            String menuName = Console.getInput("메뉴를 입력하세요(-1을 입력해 반복 입력을 종료): ");
             if (menuName.equals("-1")) {
                 break;
             }
@@ -86,6 +86,7 @@ public class OrderManager implements Manager {
 
         // add order to repository
         int ordered = orderRepository.addOrder(order);
+        order.runOrder();
 
         System.out.println("주문이 완료되었습니다. 주문 번호는 " + ordered + "입니다.");
     }
@@ -101,6 +102,18 @@ public class OrderManager implements Manager {
         orderRepository.getOrderList().forEach((orderNum, orderData) -> {
             System.out.println(orderNum + ": " + orderData.getOrderSheet());
         });
+    }
+
+    public void doneOrder() {
+        int orderId = Integer.parseInt(Console.getInput("주문 번호를 입력하세요: "));
+        Order order = orderRepository.getOrder(orderId);
+        if (order == null) {
+            System.out.println("주문이 존재하지 않습니다.");
+            return;
+        }
+        order.finishOrder();
+
+        System.out.println("주문이 완료되었습니다.");
     }
 
     @Override
@@ -152,6 +165,20 @@ public class OrderManager implements Manager {
             @Override public Function<UserType, Boolean> requireAuthentication() {
                 return userType -> true;
             }
+        },
+        ORDER_DONE {
+            @Override public Runnable getRunner() {
+                return OrderManager.getInstance()::doneOrder;
+            }
+            @Override public String getName() {
+                return "주문 완료";
+            }
+            @Override public String getDescription() {
+                return "주문을 완료합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return userType -> true;
+            }
         }
     }
 
@@ -195,6 +222,9 @@ public class OrderManager implements Manager {
 
     public static void main(String[] args) {
         SessionStorage.getInstance().getStorage().put("user", UserType.ADMIN);
+        MenuRepository.getInstance().createMenu(new Menu("생선까스", 10000));
+        MenuRepository.getInstance().createMenu(new Menu("돈까스", 10000));
+        MenuRepository.getInstance().createMenu(new Menu("냉면", 10000));
         OrderManager orderManager = OrderManager.getInstance();
         orderManager.run();
     }

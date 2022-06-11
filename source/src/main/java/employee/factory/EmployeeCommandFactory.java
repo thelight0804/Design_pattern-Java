@@ -4,6 +4,7 @@ import employee.Employee;
 import employee.EmployeeType;
 import employee.commute.command.CommuteCommand;
 import employee.commute.command.OnWorkCommand;
+import employee.commute.receiver.CommandReceiver;
 
 /**
  * This factory class creates Command objects for commute management.
