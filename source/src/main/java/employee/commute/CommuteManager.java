@@ -4,6 +4,7 @@ import conf.enums.UserType;
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
 import conf.middleware.Console;
+import employee.Attendance;
 import employee.Employee;
 import employee.EmployeeManagement;
 import employee.commute.command.CommuteCommand;
@@ -13,13 +14,11 @@ import employee.commute.receiver.DeliveryEmployee;
 import employee.commute.receiver.KitchenEmployee;
 import employee.exception.NoSpaceForCommandException;
 import menu.MenuManagement;
+import repository.AttendanceRepository;
 import repository.EmployeeRepository;
 
 import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 
 /**
@@ -86,6 +85,24 @@ public class CommuteManager implements Manager {
         }
         catch (NullPointerException e) {
             System.out.println("등록되지 않은 직원 개인 번호입니다.");
+        }
+    }
+
+    public void checkAttendance(){
+        try{
+            AttendanceRepository attendance = AttendanceRepository.getInstance();
+            EmployeeRepository employeeRepository = EmployeeRepository.getInstance();
+            String name = Console.getInput("이름을 입력하세요");
+            String password = Console.getInput("비밀번호를 입력하세요");
+
+            Employee searched = employeeRepository.searchEmployeeByName(name).orElse(null);
+            if(!searched.getPassword().equals(password)){
+                System.out.println("비밀번호를 잘못 입력하셨습니다.");
+                return;
+            }
+            attendance.getAttendanceByEmployee(searched).forEach(System.out::println);
+        }catch (NullPointerException e ) {
+            System.out.println("아이디가 올바르지 않습니다.");
         }
     }
 
@@ -173,6 +190,21 @@ public class CommuteManager implements Manager {
 
             @Override public Runnable getRunner() {
                 return CommuteManager.getInstance()::offWork;
+            }
+        },
+
+        ATTENDANCE_EMPLOYEE{
+            @Override public Runnable getRunner() {
+                return CommuteManager.getInstance()::checkAttendance;
+            }
+            @Override public String getName() {
+                return "직원 근퇴 조회";
+            }
+            @Override public String getDescription() {
+                return "직원 근퇴 목록을 조회합니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return userType -> userType == UserType.ADMIN;
             }
         }
 
