@@ -1,9 +1,7 @@
 package sales.print.printer;
 
-import sales.Sales;
 import sales.TransactionType;
 
-import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class CardSalesPrint extends SalesPrint {
