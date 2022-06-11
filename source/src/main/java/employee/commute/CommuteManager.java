@@ -1,6 +1,7 @@
 package employee.commute;
 
 import conf.enums.UserType;
+import conf.interfaces.Element;
 import conf.interfaces.EndpointElement;
 import conf.interfaces.Manager;
 import conf.middleware.Console;
@@ -107,33 +108,8 @@ public class CommuteManager implements Manager {
     }
 
     public void run() {
-        BufferedReader br = new BufferedReader(new java.io.InputStreamReader(System.in));
-        for (; ; ) {
-            System.out.println("등록할 때 부여된 개인 번호를 통해 출근/퇴근 확인을 해주시기 바랍니다.");
-            System.out.println("1. 출근 등록");
-            System.out.println("2. 퇴근 등록");
-            try {
-                switch (Integer.parseInt(br.readLine())) {
-                    case 1:
-                        System.out.println("출근 등록을 위해 등록할 개인 번호를 입력해주세요.");
-                        int index = Integer.parseInt(br.readLine());
-                        onWork();
-                        break;
-                    case 2:
-                        System.out.println("퇴근 등록을 위해 등록할 개인 번호를 입력해주세요.");
-                        index = Integer.parseInt(br.readLine());
-                        offWork();
-                        break;
-                    default:
-                        System.out.println("잘못 입력하셨습니다.");
-                        return;
-                }
-            } catch (NumberFormatException e) { // NumberFormatException if input is not integer
-                System.out.println("잘못된 입력입니다.");
-            } catch (Exception e) {
-                System.out.println("에러가 발생했습니다.");
-            }
-        }
+        System.out.println("등록할 때 부여된 개인 번호를 통해 출근/퇴근 확인을 해주시기 바랍니다.");
+        Manager.invokeMenu(CommuteManagementEndpoint.values());
     }
 
     public static void main(String[] args) {
@@ -157,7 +133,7 @@ public class CommuteManager implements Manager {
         commuteManager.run();
     }
 
-    enum CommuteManagementEndpoint implements EndpointElement {
+    private enum CommuteManagementEndpoint implements EndpointElement {
         ON_WORK{
             @Override public String getName() {
                 return "출근";
@@ -165,12 +141,9 @@ public class CommuteManager implements Manager {
             @Override public String getDescription() {
                 return "출근 시간을 데이터베이스에 주가합니다.";
             }
-
-            @Override
-            public Function<UserType, Boolean> requireAuthentication() {
+            @Override public Function<UserType, Boolean> requireAuthentication() {
                 return (userType -> true);
             }
-
             @Override public Runnable getRunner() {
                 return CommuteManager.getInstance()::onWork;
             }
@@ -182,12 +155,9 @@ public class CommuteManager implements Manager {
             @Override public String getDescription() {
                 return "퇴근 시간을 데이터베이스에 주가합니다.";
             }
-
-            @Override
-            public Function<UserType, Boolean> requireAuthentication() {
+            @Override public Function<UserType, Boolean> requireAuthentication() {
                 return (userType -> true);
             }
-
             @Override public Runnable getRunner() {
                 return CommuteManager.getInstance()::offWork;
             }
