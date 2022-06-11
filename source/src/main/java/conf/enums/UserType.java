@@ -7,8 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum UserType {
     // TODO: you should get user password from environment variable
-    ADMIN("ADMIN", "관리자", "admin_password"),
-    EMPLOYEE("EMPLOYEE", "직원", "employee_password");
+    ADMIN("ADMIN", "admin", "admin_password"),
+    EMPLOYEE("EMPLOYEE", "emplo", "employee_password");
 
     private final String roles;
     private final String name;

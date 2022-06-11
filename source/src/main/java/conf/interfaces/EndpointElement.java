@@ -1,8 +1,5 @@
 package conf.interfaces;
 
-public interface EndpointElement {
-
-    String getName();
-    String getDescription();
+public interface EndpointElement extends Element {
     Runnable getRunner();
 }
