@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.ToString;
 import menu.MenuManagement;
 import repository.EmployeeRepository;
+import sales.SalesManagement;
 import setting.SettingManager;
 
 import java.io.BufferedReader;
@@ -103,7 +104,21 @@ public class ApplicationRunner implements Manager {
                 return (user) -> true;
             }
             @Override public Supplier<Manager> getManagerSupplier() {
-                return null; // TODO: make OrderManagement class
+                return null;
+            }
+        },
+        SALES_MANAGEMENT{
+            @Override public String getName() {
+                return "매출 관리";
+            }
+            @Override public String getDescription() {
+                return "매출 관리를 할 수 있습니다.";
+            }
+            @Override public Function<UserType, Boolean> requireAuthentication() {
+                return (user) -> true;
+            }
+            @Override public Supplier<Manager> getManagerSupplier() {
+                return SalesManagement::getInstance;
             }
         },
         SETTING {
