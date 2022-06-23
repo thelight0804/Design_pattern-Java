@@ -28,7 +28,8 @@ public class SalesManagement implements Manager {
     }
 
     public void checkCash(){
-        SessionStorage.getInstance().getStorage().put("money", Integer.parseInt("220000"));
+        SessionStorage.getInstance()
+                .getStorage().put("money", Integer.parseInt("220000" /* TODO: Should be connected to logic. */));
         Object money = SessionStorage.getInstance().getStorage().get("money");
         System.out.println("현재 돈통에 있는 현금 : " + money+ "원");
     }

@@ -1,0 +1,107 @@
+format 224
+
+classcanvas 128070 class_ref 143302 // ServeType
+  classdiagramsettings member_max_width 0 end
+  xyz 712 176 2000
+end
+classcanvas 128198 class_ref 143430 // OrderType
+  classdiagramsettings member_max_width 0 end
+  xyz 374 176 2000
+end
+classcanvas 128326 class_ref 143558 // Order
+  classdiagramsettings member_max_width 0 end
+  xyzwh 497 342 2000 293 133
+end
+classcanvas 128454 class_ref 143686 // Call
+  classdiagramsettings member_max_width 0 end
+  xyz 40 127 2000
+end
+classcanvas 128582 class_ref 143814 // App
+  classdiagramsettings member_max_width 0 end
+  xyz 40 192 2000
+end
+classcanvas 128710 class_ref 143942 // Visit
+  classdiagramsettings member_max_width 0 end
+  xyz 40 260 2000
+end
+classcanvas 128838 class_ref 144070 // CallOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 305 554 2000
+end
+classcanvas 128966 class_ref 144198 // AppOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 538 554 2000
+end
+classcanvas 129094 class_ref 144326 // VisitOrder
+  classdiagramsettings member_max_width 0 end
+  xyz 773 554 2000
+end
+classcanvas 129222 class_ref 144454 // Dining
+  classdiagramsettings member_max_width 0 end
+  xyz 898 124 2000
+end
+classcanvas 129350 class_ref 144582 // Delivery
+  classdiagramsettings member_max_width 0 end
+  xyz 898 184 2000
+end
+classcanvas 129478 class_ref 144710 // TakeOut
+  classdiagramsettings member_max_width 0 end
+  xyz 898 246 2000
+end
+relationcanvas 128110 relation_ref 142958 // <generalisation>
+  from ref 128838 z 2001 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128238 relation_ref 143086 // <generalisation>
+  from ref 128966 z 2001 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128494 relation_ref 143342 // <generalisation>
+  decenter_begin 412
+  from ref 129094 z 2001 to ref 128326
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129606 relation_ref 143686 // <realization>
+  from ref 128454 z 2001 to ref 128198
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129734 relation_ref 143814 // <realization>
+  from ref 128582 z 2001 to ref 128198
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129862 relation_ref 143942 // <realization>
+  from ref 128710 z 2001 to ref 128198
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129990 relation_ref 144070 // <realization>
+  from ref 129222 z 2001 to ref 128070
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130118 relation_ref 144198 // <realization>
+  from ref 129350 z 2001 to ref 128070
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130246 relation_ref 144326 // <realization>
+  from ref 129478 z 2001 to ref 128070
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131398 relation_ref 144838 // <directional composition>
+  from ref 128326 z 2001 to ref 128070
+  role_a_pos 749 251 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131654 relation_ref 144710 // <directional composition>
+  from ref 128326 z 2001 to ref 128198
+  role_a_pos 540 251 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

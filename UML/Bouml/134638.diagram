@@ -1,0 +1,160 @@
+format 224
+
+packagecanvas 128238 
+  package_ref 141382 // commute
+  name_in_tab yes  xyzwh 38 441 2000 1105 395
+end
+classcanvas 128366 class_ref 158662 // CommandReceiver
+  classdiagramsettings member_max_width 0 end
+  xyz 539 613 2000
+end
+classcanvas 128494 class_ref 163054 // CommandFactory
+  classdiagramsettings member_max_width 0 end
+  xyz 480 245 2000
+end
+classcanvas 128622 class_ref 158406 // DiningEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 334 496 2006
+end
+classcanvas 128878 class_ref 158278 // DeliveryEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 326 600 2006
+end
+classcanvas 129134 class_ref 158534 // KitchenEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 328 724 2006
+end
+classcanvas 129390 class_ref 151366 // CommuteCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 1006 632 2000
+end
+classcanvas 129518 class_ref 158022 // OnWorkCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 675 675 2006
+end
+classcanvas 129902 class_ref 158150 // OffWorkCommand
+  classdiagramsettings member_max_width 0 end
+  xyz 675 586 2006
+end
+classcanvas 130414 class_ref 163182 // EmployeeType
+  classdiagramsettings member_max_width 0 end
+  xyz 480 324 2000
+end
+classcanvas 130670 class_ref 163310 // FullTimeDiningEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 117 487 2000
+end
+classcanvas 130798 class_ref 163438 // PartTimeDiningEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 63 544 2000
+end
+classcanvas 130926 class_ref 163566 // FullTimeDeliveryEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 107 603 2011
+end
+classcanvas 131054 class_ref 163694 // FullTimeKitchenEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 109 721 2000
+end
+classcanvas 131694 class_ref 163822 // PartTimeDeliveryEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 63 662 2012
+end
+classcanvas 131950 class_ref 163950 // PartTimeKitchenEmployee
+  classdiagramsettings member_max_width 0 end
+  xyz 63 780 2012
+end
+classcanvas 132206 class_ref 164078 // FullTimeCommandFactory
+  classdiagramsettings member_max_width 0 end
+  xyz 176 142 2006
+end
+classcanvas 132462 class_ref 164206 // PartTimeCommandFactory
+  classdiagramsettings member_max_width 0 end
+  xyz 556 62 2006
+end
+relationcanvas 128750 relation_ref 158790 // <realization>
+  from ref 128622 z 2007 to ref 128366
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129006 relation_ref 158662 // <realization>
+  from ref 128878 z 2007 to ref 128366
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129262 relation_ref 158918 // <realization>
+  from ref 129134 z 2007 to ref 128366
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129646 relation_ref 158406 // <realization>
+  from ref 129518 z 2007 to ref 129390
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129774 relation_ref 159430 // <association>
+  from ref 129518 z 2007 to ref 128366
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130030 relation_ref 158534 // <realization>
+  from ref 129902 z 2007 to ref 129390
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130158 relation_ref 159558 // <association>
+  from ref 129902 z 2007 to ref 128366
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130286 relation_ref 164334 // <dependency>
+  from ref 128494 z 2001 stereotype "<<create>>" xyz 893.5 476.5 3000 to ref 129390
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130542 relation_ref 164462 // <dependency>
+  from ref 130414 z 2001 to ref 128494
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131182 relation_ref 164590 // <generalisation>
+  from ref 130670 z 2007 to ref 128622
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131310 relation_ref 164718 // <generalisation>
+  from ref 130926 z 2012 to ref 128878
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131438 relation_ref 164846 // <generalisation>
+  from ref 131054 z 2007 to ref 129134
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131566 relation_ref 164974 // <generalisation>
+  from ref 130798 z 2007 to ref 128622
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131822 relation_ref 165102 // <generalisation>
+  from ref 131694 z 2013 to ref 128878
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132078 relation_ref 165230 // <generalisation>
+  from ref 131950 z 2013 to ref 129134
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132590 relation_ref 165486 // <generalisation>
+  from ref 132206 z 2007 to ref 128494
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132718 relation_ref 165614 // <generalisation>
+  from ref 132462 z 2007 to ref 128494
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end
