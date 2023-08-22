@@ -73,7 +73,7 @@ Java 디자인패턴을 적용하여 개발한 식당 관리 시스템
 - 이수찬 [soochan] <a href="https://github.com/soochangoforit" target="GitHub"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=GitHub&logoColor=white"/></a>
 - 최인수 [Nifskor] <a href="https://github.com/Nifskor" target="GitHub"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=GitHub&logoColor=white"/></a>
 - 박상현 [thelight0804] <a href="https://github.com/thelight0804" target="GitHub"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=GitHub&logoColor=white"/></a>
-<a href="https://thelight0804.notion.site/Restaurants-Management-System-bb8a7dca1205470f80d4fb152f5571ce" target="Notion"><img src="https://img.shields.io/badge/Notion-d4d4d4?style=flat-square&logo=Notion&logoColor=black"/></a>
+<a href="https://www.notion.so/thelight0804/Restaurants-Management-System-5dc3106874234a4aa6e271275dcd123b?pvs=4" target="Notion"><img src="https://img.shields.io/badge/Notion-d4d4d4?style=flat-square&logo=Notion&logoColor=black"/></a>
 
 ## ****🗓️ 프로젝트 기간****
 
